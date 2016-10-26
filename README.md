@@ -18,7 +18,7 @@ sudo apt-get install xfce4 xfce4-goodies
 echo xfce4-session > ~/.xsession
 sudo cp /home/ubuntu/.xsession /etc/skel
 sudo vim /etc/xrdp/xrdp.ini
-## under [xrdp1] chang port=-1 to port=ask-1
+## under [xrdp1] change port=-1 to port=5911
 sudo cim ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
 ## change <property name="&lt;Super&gt;Tab" type="string" value="switch_window_key"/>
 ## to
