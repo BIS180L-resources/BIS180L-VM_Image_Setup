@@ -31,49 +31,59 @@ Your application approval email came with a promotional credit code
 ## Creating your BIS180L instance
 
 1. Go to https://us-west-1.console.aws.amazon.com/ec2/v2/home?region=us-west-1
-  1. Make sure it says N.California in the top right corner
+  * Make sure it says N.California in the top right corner
 2. Click on the blue button in the middle of the screen saying "Launch Instance"
-  1. It should say "Note: Your instances will launch in the US West (N. California) region"
+  * It should say "Note: Your instances will launch in the US West (N. California) region"
+  ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/EC2_Home.png)
 3. Click on Community AMIs in the menu on the left
 4. In the search bar search for BIS180L
 5. Select BIS180L - ami-d67c36b6
-6. On next page click on the 4th option down 
-  1. It should say "t2.medium (Variable ECUs, 2 vCPUs, 2.5 GHz, Intel Xeon Family, 4 GiB memory, EBS only)" on the screen now
+  ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/EC2_AMI.png)
+6. On next page click on the 4th option down
+  ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/EC2_Instance.png)
+  * It should say "t2.medium (Variable ECUs, 2 vCPUs, 2.5 GHz, Intel Xeon Family, 4 GiB memory, EBS only)" on the screen now
 7. Click "6. Configure Security Group" at the top of the page
 8. Make sure "create a new security group" is selected. Then change Type to All TCP
+  ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/EC2_Security.png)
 9. Click Review and launch at the bottom of the page
 10. Click Launch
 11. Select "Create a new key pair"
-  1. Name it whatever you want
-  2. Click the Download button
-  3. Press "Launch Instances"
+  ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/EC2_Key.png)
+  * Name it whatever you want
+  * Click the Download button
+  * Press "Launch Instances"
   
 ## Attaching Permanent IP address to instance
 
 1. Go to https://us-west-1.console.aws.amazon.com/ec2/v2/home?region=us-west-1#Addresses:sort=publicIp
+  ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/EC2_Elastic.png)
 2. Click "Allocate New Address"
 3. Click on "Actions" followed by "Associate Address"
 4. On the pop-up window click on instance box and the name of your instance will pop up. Click on it followed "Associate" at the bottom of the window
+  ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/EC2_Associate.png)
 
 ## Connecting to your Instance for the first time
 ### Connecting this way will only be used doing initial setup and incase something goes wrong
 
 1. Go to https://us-west-1.console.aws.amazon.com/ec2/v2/home?region=us-west-1#Instances:sort=securityGroupNames
-  1. Here you'll find your instance
-  2. Take note of your Public IP (you'll need this later)
+  ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/EC2_Overview.png)
+  * Here you'll find your instance
+  * Take note of your Public IP (you'll need this later)
 2. Click Connect (This will open a new window)
-3. Under example copy the line which starts with "ssh"
+  ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/EC2_Connect.png)
+  * Under example copy the line which starts with "ssh"
 4. Open up your Terminal interface (ie. GitBash (Windows), Terminal(Mac))
 5. Paste in the line you copied
-  1. You will have to change where it says "root" and replace it with "ubuntu"
+  ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/EC2_Terminal.png)
+  * You will have to change where it says "root" and replace it with "ubuntu"
 6. You should now be logged into your Instance
 
 ## First time Setup
 
 1. While logged into your Instance
 2. Enter `sudo passwd ubuntu`
-  1. Enter a new password you want to use
-  2. This password will be used to log into Rstudio and to log into your instance if you lose you keypair file
+  * Enter a new password you want to use
+  * This password will be used to log into Rstudio and to log into your instance if you lose you keypair file
   
 ## Connecting to you Desktop Interface
 
@@ -82,3 +92,4 @@ Your application approval email came with a promotional credit code
   * Ex: 127.0.0.0:1
 3. You will be asked to enter a password, the password is "Genomics"
 4. You should now be able to see your desktop
+  ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/EC2_VNC.png)
