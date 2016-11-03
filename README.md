@@ -1,5 +1,7 @@
 # Getting Started with AWS
 
+
+
 # Creating an AWS account
 
 1. Go to https://aws.amazon.com/
