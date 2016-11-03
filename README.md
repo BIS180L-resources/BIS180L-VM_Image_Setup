@@ -13,13 +13,14 @@
 
 1. Go to https://www.awseducate.com/Application?apptype=student
 2. Fill out the form appropriately
-![alt text](https://github.com/johnny3420/AWS_Setup/tree/master/Pictures/AWS_Educate.png "Example")
   1. For institution type Davis and our school option will pop up, click on it
   2. __USE YOUR @UCDAVIS.EDU email__
   3. Your AWS Account ID can be found at https://console.aws.amazon.com/billing/home?#/account
   4. __DO NOT__ click the option for AWS Educate Starter Account
 3. Complete the verification process
 4. Your application should be approved within 1 minute if you followed the steps correctly.
+
+![alt text](https://github.com/johnny3420/AWS_Setup/tree/master/Pictures/AWS_Educate.png "Example")
 
 ## Apply $100.00 credit to your account
 
