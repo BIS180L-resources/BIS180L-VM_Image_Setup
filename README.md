@@ -4,9 +4,9 @@
 1. Go to https://aws.amazon.com/
 2. Click Create an AWS Account
 3. If you have an amazon account login with your amazon credentials (If not, create an account)
-  1. Follow the instructions to create your account.
-  2. On the Contact Information page select Personal Account
-  3. For Support plan, the free option has already been picked, just click continue
+  * Follow the instructions to create your account.
+  * On the Contact Information page select Personal Account
+  * For Support plan, the free option has already been picked, just click continue
 4. If the instructions have been followed, your AWS should be created.
 
 ## Sign up for AWS Educate
