@@ -1,5 +1,14 @@
 # AWS_Setup
 
+## Base Instance Creation
+Contents of Base Instance
+  1. Free-tier Ubuntu 16.04 LTS AMI
+  2. 2 Core, 4 Gb RAM
+  3. 30Gb EBS storage
+  4. Security, All TCP
+  5. Elastic IP (Since been released)
+
+## Updating and installing VNC and Desktop
 ```
 sudo apt-get update
 sudo apt-get upgrade
@@ -13,25 +22,45 @@ vncserver #"Genomics"
 vncserver -kill :1
 mv ~/.vnc/xstartup ~/.vnc/xstartup.bak
 nano ~/.vnc/xstartup
-### Paste in
+```
+Pasted the following into ~/.vnc/xstartup
+
+```
 #!/bin/bash
 xrdb $HOME/.Xresources
 startxfce4 &
-###
+```
+
+Exited ~/.vnc/xstartup and now in terminal
+
+```
 sudo chmod +x ~/.vnc/xstartup
 vncserver
-### from new terminal window
-ssh -L 5901:127.0.0.1:5901 -N -f -l username server_ip_address #username = ubuntu, password = Genomics, server_ip_address = elastic ip
-### in original terminal window
-sudo vim ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
-## change <property name="&lt;Super&gt;Tab" type="string" value="switch_window_key"/>
-## to
-## <property name="&lt;Super&gt;Tab" type="empty"/>
-## Fixes Tab so it autocompletes now
+```
+From new terminal window
 
-## Make vnc a system service
+```
+ssh -L 5901:127.0.0.1:5901 -N -f -l username server_ip_address #username = ubuntu, password = Genomics, server_ip_address = elastic ip
+```
+
+Back in original terminal window
+
+```
+sudo vim ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
+```
+change <property name="&lt;Super&gt;Tab" type="string" value="switch_window_key"/>
+to
+<property name="&lt;Super&gt;Tab" type="empty"/>
+Fixes Tab so it autocompletes now
+
+Make vnc a system service
+
+```
 sudo nano /etc/systemd/system/vncserver@.service
-### paste
+```
+Pasted in the following
+
+```
 [Unit]
 Description=Start TightVNC server at startup
 After=syslog.target network.target
@@ -47,8 +76,11 @@ ExecStop=/usr/bin/vncserver -kill :%i
 
 [Install]
 WantedBy=multi-user.target
-###
+```
 
+Exit /etc/systemd/system/vncserver@.service and back in terminal
+
+```
 sudo systemctl daemon-reload
 sudo systemctl enable vncserver@1.service
 vncserver -kill :1
@@ -67,6 +99,7 @@ dpkg -i --force-depends google-chrome-stable_current_amd64.deb
 apt-get install -f
 ### in Applications > Settings > Preferred Applications, set google chrome as browser
 
+###
 apt-get install libcurl4-openssl-dev #needed for bioconductor
 apt-get install libboost-iostreams-dev
 apt-get install libgsl0-dev
