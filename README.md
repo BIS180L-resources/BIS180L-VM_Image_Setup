@@ -13,7 +13,7 @@
 
 1. Go to https://www.awseducate.com/Application?apptype=student
 2. Fill out the form appropriately
-  * ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/AWS_Educate.png)
+   ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/AWS_Educate.png)
   * For institution type Davis and our school option will pop up, click on it
   * __USE YOUR @UCDAVIS.EDU email__
   * Your AWS Account ID can be found at https://console.aws.amazon.com/billing/home?#/account
