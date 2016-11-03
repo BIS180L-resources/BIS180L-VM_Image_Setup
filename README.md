@@ -20,7 +20,7 @@
 3. Complete the verification process
 4. Your application should be approved within 1 minute if you followed the steps correctly.
 
-![alt text](https://github.com/johnny3420/AWS_Setup/tree/master/Pictures/AWS_Educate.png "Example")
+![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/AWS_Educate.png)
 
 ## Apply $100.00 credit to your account
 
