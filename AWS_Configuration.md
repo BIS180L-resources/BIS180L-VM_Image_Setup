@@ -171,6 +171,7 @@ install.packages("LDheatmap")
 ```
 
 ### Installing Rstudio-server
+Created a Desktop Launcher
 
 ```
 wget https://download2.rstudio.org/rstudio-server-1.0.44-amd64.deb
