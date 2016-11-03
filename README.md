@@ -1,7 +1,5 @@
 # Getting Started with AWS
- 
- 
-# Creating an AWS account
+## Creating an AWS account
 
 1. Go to https://aws.amazon.com/
 2. Click Create an AWS Account
@@ -11,7 +9,7 @@
   3. For Support plan, the free option has already been picked, just click continue
 4. If the instructions have been followed, your AWS should be created.
 
-# Sign up for AWS Educate
+## Sign up for AWS Educate
 
 1. Go to https://www.awseducate.com/Application?apptype=student
 2. Fill out the form appropriately
@@ -22,14 +20,14 @@
 3. Complete the verification process
 4. Your application should be approved within 1 minute if you followed the steps correctly.
 
-# Apply $100.00 credit to your account
+## Apply $100.00 credit to your account
 
 Your application approval email came with a promotional credit code
 
 1. Go to https://console.aws.amazon.com/billing/home?#/credits
 2. Enter your promo code and your credit should be applied
 
-# Creating your BIS180L instance
+## Creating your BIS180L instance
 
 1. Go to https://us-west-1.console.aws.amazon.com/ec2/v2/home?region=us-west-1
   1. Make sure it says N.California in the top right corner
@@ -49,15 +47,15 @@ Your application approval email came with a promotional credit code
   2. Click the Download button
   3. Press "Launch Instances"
   
-# Attaching Permanent IP address to instance
+## Attaching Permanent IP address to instance
 
 1. Go to https://us-west-1.console.aws.amazon.com/ec2/v2/home?region=us-west-1#Addresses:sort=publicIp
 2. Click "Allocate New Address"
 3. Click on "Actions" followed by "Associate Address"
 4. On the pop-up window click on instance box and the name of your instance will pop up. Click on it followed "Associate" at the bottom of the window
 
-# Connecting to your Instance for the first time
-## Connecting this way will only be used doing initial setup and incase something goes wrong
+## Connecting to your Instance for the first time
+### Connecting this way will only be used doing initial setup and incase something goes wrong
 
 1. Go to https://us-west-1.console.aws.amazon.com/ec2/v2/home?region=us-west-1#Instances:sort=securityGroupNames
   1. Here you'll find your instance
@@ -69,14 +67,14 @@ Your application approval email came with a promotional credit code
   1. You will have to change where it says "root" and replace it with "ubuntu"
 6. You should now be logged into your Instance
 
-# First time Setup
+## First time Setup
 
 1. While logged into your Instance
 2. Enter `sudo passwd ubuntu`
   1. Enter a new password you want to use
   2. This password will be used to log into Rstudio and to log into your instance if you lose you keypair file
   
-# Connecting to you Desktop Interface
+## Connecting to you Desktop Interface
 
 1. Open whatever VNC viewer you wish to use
 2. Your VNC server will be your Public IP you noted earlier except you'll add ":1: to the end of it
