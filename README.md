@@ -7,7 +7,7 @@
   * Follow the instructions to create your account.
   * On the Contact Information page select Personal Account
   * For Support plan, the free option has already been picked, just click continue
-4. If the instructions have been followed, your AWS should be created.
+4. If the instructions have been followed, your AWS Account should be created.
 
 ## Sign up for AWS Educate
 
@@ -15,11 +15,11 @@
 2. Fill out the form appropriately
    ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/AWS_Educate.png)
   * For institution type Davis and our school option will pop up, click on it
-  * __USE YOUR @UCDAVIS.EDU email__
+  * __USE YOUR @UCDAVIS.EDU EMAIL__
   * Your AWS Account ID can be found at https://console.aws.amazon.com/billing/home?#/account
   * __DO NOT__ click the option for AWS Educate Starter Account
 3. Complete the verification process
-4. Your application should be approved within 1 minute if you followed the steps correctly.
+4. Your application should be approved within 1 minute and you will receive an approval email if you followed the steps correctly.
 
 ## Apply $100.00 credit to your account
 
@@ -59,7 +59,7 @@ Your application approval email came with a promotional credit code
   ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/EC2_Elastic.png)
 2. Click "Allocate New Address"
 3. Click on "Actions" followed by "Associate Address"
-4. On the pop-up window click on instance box and the name of your instance will pop up. Click on it followed "Associate" at the bottom of the window
+4. On the pop-up window click on the instance box and the name of your instance will pop up, click on it followed by "Associate" at the bottom of the window
   ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/EC2_Associate.png)
 
 ## Connecting to your Instance for the first time
@@ -71,7 +71,7 @@ Your application approval email came with a promotional credit code
   * Take note of your Public IP (you'll need this later)
 2. Click Connect (This will open a new window)
   ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/EC2_Connect.png)
-  * Under example copy the line which starts with "ssh"
+  * Under Example: copy the line which starts with "ssh"
 4. Open up your Terminal interface (ie. GitBash (Windows), Terminal(Mac))
 5. Paste in the line you copied
   ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/EC2_Terminal.png)
@@ -85,7 +85,7 @@ Your application approval email came with a promotional credit code
   * Enter a new password you want to use
   * This password will be used to log into Rstudio and to log into your instance if you lose you keypair file
   
-## Connecting to you Desktop Interface
+## Connecting to your Desktop Interface
 
 1. Open whatever VNC viewer you wish to use
 2. Your VNC server will be your Public IP you noted earlier except you'll add ":1: to the end of it
