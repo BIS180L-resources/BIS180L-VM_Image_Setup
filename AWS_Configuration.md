@@ -126,6 +126,7 @@ sudo -s
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 dpkg -i --force-depends google-chrome-stable_current_amd64.deb
 apt-get install -f
+rm google-chrome-stable_current_amd64.deb
 ### in Applications > Settings > Preferred Applications, set google chrome as browser
 ```
 
@@ -174,22 +175,28 @@ biocLite()
 biocLite("chopsticks")
 biocLite("edgeR")
 biocLite("VariantAnnotation")
-biocLite("snpMatrix")
 install.packages("LDheatmap")
 ```
 
-### Installing Rstudio-server
+### Installing Rstudio
 Created a Desktop Launcher
 
 ```
-wget https://download2.rstudio.org/rstudio-server-1.0.44-amd64.deb
-sudo gdebi rstudio-server-1.0.44-amd64.deb
+wget https://download1.rstudio.org/rstudio-1.0.44-amd64.deb
+sudo gdebi rstudio-1.0.44-amd64.deb
+rm rstudio-1.0.44-amd64.deb
 ```
 
 ### Installing libre office 
 
 ```
-sudo apt-get install libreoffice-writer
+sudo apt-get install libreoffice-writer libreoffice-calc
+```
+
+### Installing git viewer
+
+```
+sudo apt-get install gitg
 ```
 
 ### Installing htop
@@ -202,7 +209,7 @@ sudo apt-get install htop
 #### Also created a desktop launcher
 
 ```
-sudo apt-get igv
+sudo apt-get install igv
 ```
 
 ### Installing Jalview
@@ -218,11 +225,101 @@ sudo apt-get install seaview
 sudo apt-get install clustalw clustalx kalign t-coffee muscle mafft probcons
 ```
 
-### Installing Short Read Tools
-#### Note no cufflinks
+### Installing BWA
 
 ```
-sudo apt-get install tophat bwa bowtie2 bowtie2-examples samtools bedtools fastqc
+cd /usr/src
+git clone https://github.com/lh3/bwa.git
+cd bwa; make
+cd /usr/bin
+ln -s /usr/src/bwa/bwa
+```
+
+### Installing Bowtie
+
+```
+cd /usr/src
+wget https://downloads.sourceforge.net/project/bowtie-bio/bowtie/1.1.2/bowtie-1.1.2-linux-x86_64.zip
+unzip bowtie-1.1.2-linux-x86_64.zip
+rm bowtie-1.1.2-linux-x86_64.zip
+cd /usr/bin
+ln -sf ../src/bowtie-1.1.2/bowtie ./
+
+```
+
+### Installing Bowtie2
+
+```
+cd /usr/src
+wget https://downloads.sourceforge.net/project/bowtie-bio/bowtie2/2.2.9/bowtie2-2.2.9-linux-x86_64.zip
+unzip bowtie2-2.2.9-linux-x86_64.zip
+rm bowtie2-2.2.9-linux-x86_64.zip
+cd /usr/bin
+cp -sf ../src/bowtie2-2.2.9/bowtie2* ./
+```
+
+### Installing Tophat
+
+```
+cd /usr/src
+wget https://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.1.Linux_x86_64.tar.gz
+tar xvfz tophat-2.1.1.Linux_x86_64.tar.gz
+rm tophat-2.1.1.Linux_x86_64.tar.gz
+cd /usr/bin
+ln -s /usr/src/tophat-2.1.1.Linux_x86_64/tophat* ./
+```
+
+### Installing Samtools
+
+```
+cd /usr/src
+wget https://github.com/samtools/samtools/releases/download/1.3.1/samtools-1.3.1.tar.bz2
+tar -xvf samtools-1.3.1.tar.bz2
+rm samtools-1.3.1.tar.bz2
+cd samtools-1.3.1/
+make
+make prefix=/usr/src/samtools-1.3.1 install
+cd /usr/bin
+cp -s ../src/samtools-1.3.1/bin/* ./
+```
+
+### Installing Bedtools
+
+```
+cd /usr/src
+wget https://github.com/arq5x/bedtools2/releases/download/v2.25.0/bedtools-2.25.0.tar.gz
+tar -zxvf bedtools-2.25.0.tar.gz
+rm bedtools-2.25.0.tar.gz
+cd bedtools2
+make
+cd /usr/bin
+cp -s /usr/src/bedtools2/bin/* ./
+```
+
+### Installing Fastqc
+
+```
+cd /usr/src
+wget www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip
+unzip fastqc_v0.11.5.zip
+rm fastqc_v0.11.5.zip
+cd FastQC/
+chmod 0755 fastqc
+cd /usr/bin
+cp -s ../src/FastQC/fastqc ./
+
+```
+
+### Installing Cufflinks
+
+```
+cd /usr/src
+wget http://cole-trapnell-lab.github.io/cufflinks/assets/downloads/cufflinks-2.2.1.Linux_x86_64.tar.gz
+tar -xvzf cufflinks-2.2.1.Linux_x86_64.tar.gz
+rm cufflinks-2.2.1.Linux_x86_64.tar.gz
+cd /usr/bin
+cp -sf ../src/cufflinks-2.2.1.Linux_x86_64/cuff* ./
+cp -sf ../src/cufflinks-2.2.1.Linux_x86_64/g* ./
 ```
 
 ### Installing Blast
@@ -232,12 +329,18 @@ apt-get install blast2 ncbi-blast+ ncbi-blast+-legacy
 ```
 
 ### Markdown viewer: Remarkable
-Downloaded from website and installed with gdebi
+
+```
+wget https://remarkableapp.github.io/files/remarkable_1.87_all.deb
+gdebi remarkable_1.87_all.deb
+rm remarkable_1.87_all.deb
+```
 
 ### Installing PIP
 
 ```
 sudo apt-get install python-pip python-numpy python-scipy
+sudo pip install --upgrade pip
 ```
 
 ### Installing MACS2
@@ -247,9 +350,10 @@ sudo pip install MACS2
 ```
 
 ### Installing Cytoscape
-Downloaded from their website
 
 ```
+cd /usr/src
+wget http://chianti.ucsd.edu/cytoscape-3.4.0/Cytoscape_3_4_0_unix.sh
 sudo chmod 755 Cytoscape_3_4_0_unix.sh
 sudo ./Cytoscape_3_4_0_unix.sh
 ```
@@ -268,10 +372,21 @@ sudo apt-get install emboss
 ```
 
 ### Install Mega
-Downloaded from website and installed wih gdebi
+
+```
+wget https://mega.nz/linux/MEGAsync/xUbuntu_16.04/amd64/megasync-xUbuntu_16.04_amd64.deb
+gdebi megasync-xUbuntu_16.04_amd64.deb
+rm megasync-xUbuntu_16.04_amd64.deb
+```
 
 ### Placing Class Data
-Downloaded and unpacked KorfData.tar.gz into /data
+
+```
+cd /
+wget http://malooflab.phytonetworks.org/downloads/BIS180L/KorfData.tar.gz
+tar xvf KorData.tar.gz
+rm KorfData.tar.gz
+```
 
 ### Installing additional R packages
 
@@ -290,10 +405,10 @@ biocLite(c("Rsubread","rtracklayer","goseq","impute","multtest","VariantAnnotati
 ### Installing FreeBayes
 
 ```
-cd /usr/local/src
+cd /usr/src
 git clone --recursive git://github.com/ekg/freebayes.git
 cd freebayes
-make
+sudo make
 sudo make install
 ```
 
@@ -301,13 +416,21 @@ sudo make install
 Downloaded from website
 
 ```
-cd /usr/local/src
+cd /usr/src
 mkdir GenomeAnalysisTK
 mv ~/GenomeAnalysisTK-3.4-46.tar.bz2 /usr/local/src/GenomeAnalysisTK
 cd GenomeAnalysisTK
 bunzip2 GenomeAnalysisTK-3.6.tar.bz2
 tar -xvf GenomeAnalysisTK-3.6.tar
-cd /usr/local/bin
+cd /usr/bin
 ### created sh called GenomeAnalysisTK with chmod 755 
 ### allows GenomeAnalysisTK to be invoked without including "java -jar /path/to/GenomeAnalysisTK.jar"
+```
+
+### Installing Atom
+
+```
+wget https://atom.io/download/deb
+sudo gdebi deb
+rm deb
 ```
