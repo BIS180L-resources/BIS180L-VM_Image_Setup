@@ -18,6 +18,14 @@ sudo /etc/init.d/ssh restart
 sudo –i
 passwd ubuntu #"Genomics"
 sudo apt install xfce4 xfce4-goodies tightvncserver
+cd /usr/src
+wget https://bintray.com/tigervnc/stable/download_file?file_path=tigervnc-1.7.0.x86_64.tar.gz
+tar xvf download_file?file_path=tigervnc-1.7.0.x86_64.tar.gz
+rm download_file?file_path=tigervnc-1.7.0.x86_64.tar.gz
+cd /usr/bin
+cp -s ../src/tigervnc-1.7.0.x86_64/usr/bin/* .
+cd
+exit
 vncserver #"Genomics"
 vncserver -kill :1
 mv ~/.vnc/xstartup ~/.vnc/xstartup.bak
@@ -40,7 +48,7 @@ vncserver
 From new terminal window
 
 ```
-ssh -L 5901:127.0.0.1:5901 -N -f -l username server_ip_address #username = ubuntu, password = Genomics, server_ip_address = elastic ip
+ssh -L 5901:127.0.0.1:5901 -N -f -l ubuntu 52.52.160.9 #password = Genomics
 ```
 
 Back in original terminal window
@@ -72,7 +80,7 @@ Pasted in the following
 
 ```
 [Unit]
-Description=Start TightVNC server at startup
+Description=Start TigerVNC server at startup
 After=syslog.target network.target
 
 [Service]
@@ -92,8 +100,8 @@ Exit /etc/systemd/system/vncserver@.service and back in terminal
 
 ```
 sudo systemctl daemon-reload
-sudo systemctl enable vncserver@1.service
 vncserver -kill :1
+sudo systemctl enable vncserver@1.service
 sudo systemctl start vncserver@1
 sudo systemctl status vncserver@1 # to check
 ```
@@ -112,7 +120,7 @@ nano .bashrc
 
 ### Installing Google Chrome
 
-```
+```sudo 
 cd
 sudo -s
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
