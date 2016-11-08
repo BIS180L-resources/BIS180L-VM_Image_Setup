@@ -418,7 +418,7 @@ Downloaded from website
 ```
 cd /usr/src
 mkdir GenomeAnalysisTK
-mv ~/GenomeAnalysisTK-3.4-46.tar.bz2 /usr/local/src/GenomeAnalysisTK
+mv ~/GenomeAnalysisTK-3.4-46.tar.bz2 /usr/src/GenomeAnalysisTK
 cd GenomeAnalysisTK
 bunzip2 GenomeAnalysisTK-3.6.tar.bz2
 tar -xvf GenomeAnalysisTK-3.6.tar
