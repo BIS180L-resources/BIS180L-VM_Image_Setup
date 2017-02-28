@@ -37,7 +37,7 @@ Your application approval email came with a promotional credit code
   ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/EC2_Home.png)
 3. Click on Community AMIs in the menu on the left
 4. In the search bar search for BIS180L
-5. Select BIS180L - ami-d67c36b6
+5. Select BIS180L - ami-b18cd2d1
   ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/EC2_AMI.png)
 6. On next page click on the 4th option down
   ![alt text](https://github.com/johnny3420/AWS_Setup/blob/master/Pictures/EC2_Instance.png)
