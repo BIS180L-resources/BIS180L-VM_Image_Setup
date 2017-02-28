@@ -87,7 +87,7 @@ Your application approval email came with a promotional credit code
   
 ## Connecting to your Desktop Interface
 
-1. Open whatever VNC viewer you wish to use
+1. Open whatever VNC viewer you wish to use. IE [RealVNC](https://www.realvnc.com/download/viewer/)
 2. Your VNC server will be your Public IP you noted earlier except you'll add ":1: to the end of it
   * Ex: 127.0.0.0:1
 3. You will be asked to enter a password, the password is "Genomics"
