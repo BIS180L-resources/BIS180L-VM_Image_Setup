@@ -443,6 +443,24 @@ Add atom packages:
 * language-markdown
 * Sublime-Style-Column-Selection
 
+### Installing fish
+
+```
+sudo apt-get install fish
+```
+
+then
+
+```
+sudo vi /etc/passwd
+```
+
+And change the line for default shell to /usr/bin/fish
+
+May need to reboot for this to stick.
+
+Change fish prompt with `fish_config`
+
 ## Additional configuration
 
 ### Nicer VIM colors
