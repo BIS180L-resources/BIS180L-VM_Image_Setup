@@ -434,3 +434,30 @@ wget https://atom.io/download/deb
 sudo gdebi deb
 rm deb
 ```
+
+Add atom packages:
+
+* git-control
+* markdown-pdf
+* line-ending-converter
+* language-markdown
+* Sublime-Style-Column-Selection
+
+## Additional configuration
+
+### Nicer VIM colors
+
+create `~/.vimrc` and add
+
+    :color desert
+    
+### Ensure encrypted VNC connection
+
+Edit ``~/.vnc/config` and uncomment and edit the SecurityTypes line to be:
+
+    securitytypes=tlsvnc
+    
+### Desktop 
+
+Remove icons from desktop and instead add them to the dock.  (left click on dock)
+
