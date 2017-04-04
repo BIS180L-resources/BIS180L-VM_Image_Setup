@@ -455,11 +455,21 @@ then
 sudo vi /etc/passwd
 ```
 
-And change the line for default shell to /usr/bin/fish
+And change the line for default shell to /usr/bin/fish, i.e.
+
+```
+ubuntu:x:1000:1000:Ubuntu:/home/ubuntu:/usr/bin/fish
+```
 
 May need to reboot for this to stick.
 
 Change fish prompt with `fish_config`
+
+Create file `~/.config/fish/fish.config` and place a single line in it to ensure that fish starts in home directory:
+
+```
+cd /home/ubuntu
+```
 
 ## Additional configuration
 
