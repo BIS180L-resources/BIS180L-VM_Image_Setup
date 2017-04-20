@@ -5,6 +5,7 @@
 * fix whitespace issue in atom 
 * make /data read only
 * remove screen saver
+* Fix swirl: `sudo chown -R ubuntu /usr/local/lib/R/site-library/swirl/`
 
 ## For labs
 
