@@ -9,6 +9,14 @@
 
 ## For labs
 
+### Water Lab
+
+Remove
+
 ### BLAST Lab
 
 Change paralog search to use a proteome file that does not have all the different isoforms
+
+Extend the lab into R so that we find all orthologs
+
+use for annotation of a genome
