@@ -6,6 +6,7 @@
 * make /data read only
 * remove screen saver
 * Fix swirl: `sudo chown -R ubuntu /usr/local/lib/R/site-library/swirl/`
+* install.packages('rsconnect') # instead of shinyapps
 
 ## For labs
 
