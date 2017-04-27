@@ -8,6 +8,7 @@
 * Fix swirl: `sudo chown -R ubuntu /usr/local/lib/R/site-library/swirl/`
 * install.packages('rsconnect') # instead of shinyapps
 * sudo apt-get install ruby-dev nodejs #needed for bundler, etc to display website locally
+* install https://github.com/rajanil/fastStructure
 
 ## For labs
 
@@ -22,3 +23,7 @@ Change paralog search to use a proteome file that does not have all the differen
 Extend the lab into R so that we find all orthologs
 
 use for annotation of a genome
+
+#### Rice SNPs
+
+Change to use fastStructure instead of PSMix
