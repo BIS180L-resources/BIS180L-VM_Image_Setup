@@ -4,9 +4,10 @@
 * remove gitk and and git_kraken
 * fix whitespace issue in atom 
 * make /data read only
-* remove screen saver
+* remove screen savert
 * Fix swirl: `sudo chown -R ubuntu /usr/local/lib/R/site-library/swirl/`
 * install.packages('rsconnect') # instead of shinyapps
+* sudo apt-get install ruby-dev nodejs #needed for bundler, etc to display website locally
 
 ## For labs
 
