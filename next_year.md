@@ -9,6 +9,9 @@
 * install.packages('rsconnect') # instead of shinyapps
 * sudo apt-get install ruby-dev nodejs #needed for bundler, etc to display website locally
 * install https://github.com/rajanil/fastStructure
+* install trimmomatic
+* install autobarcode
+* install star
 
 ## For labs
 
@@ -27,3 +30,13 @@ use for annotation of a genome
 #### Rice SNPs
 
 Change to use fastStructure instead of PSMix
+
+#### Rice GWAS
+
+Change to GAPIT
+
+#### Illumina
+
+Change to STAR
+
+
