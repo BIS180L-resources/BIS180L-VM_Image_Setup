@@ -12,7 +12,9 @@
 * install trimmomatic
 * install autobarcode
 * install star
-* IGV DOESN'T WORK.  DO IT RIGHT!!!
+* IGV DOESN'T WORK.  DO IT RIGHT!!! (Get from website, not apt-get)
+* Freebayes...currently have to use version 1.0.2
+* installation sources should go in /usr/local/src not /usr/src
 
 ## For labs
 
