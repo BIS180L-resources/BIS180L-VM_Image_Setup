@@ -12,6 +12,7 @@
 * install trimmomatic
 * install autobarcode
 * install star
+* IGV DOESN'T WORK.  DO IT RIGHT!!!
 
 ## For labs
 
