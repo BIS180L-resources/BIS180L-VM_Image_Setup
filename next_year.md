@@ -42,4 +42,10 @@ Change to GAPIT
 
 Change to STAR
 
+#### RNAseq GO terms
+
+change the lab so that rownames are not used in the code; no one loads it in with rownames = geneID
+
+provide the DE gene lists so that everyone starts with the same file.
+
 
