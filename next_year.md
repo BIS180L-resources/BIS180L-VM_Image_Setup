@@ -48,4 +48,8 @@ change the lab so that rownames are not used in the code; no one loads it in wit
 
 provide the DE gene lists so that everyone starts with the same file.
 
+#### Clustering
+
+Is the gene expression normalized?  Doesn't seem like it...
+
 
