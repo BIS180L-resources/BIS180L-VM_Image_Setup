@@ -52,4 +52,10 @@ provide the DE gene lists so that everyone starts with the same file.
 
 Is the gene expression normalized?  Doesn't seem like it...
 
+#### Metagenomics
+
+increase sample size?
+Are the reps technical?  Prob not
+Change the word "predominant" in the Qs
+
 
