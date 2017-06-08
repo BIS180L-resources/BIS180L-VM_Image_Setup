@@ -15,6 +15,7 @@
 * IGV DOESN'T WORK.  DO IT RIGHT!!! (Get from website, not apt-get)
 * Freebayes...currently have to use version 1.0.2
 * installation sources should go in /usr/local/src not /usr/src
+* make screenshot work
 
 ## For labs
 
