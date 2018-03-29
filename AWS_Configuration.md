@@ -489,3 +489,49 @@ Edit ``~/.vnc/config` and uncomment and edit the SecurityTypes line to be:
 
 Remove icons from desktop and instead add them to the dock.  (left click on dock)
 
+## 2018 update
+
+update apt-file and R
+```
+sudo apt-get update
+sudo apt-get upgrade
+
+echo 'deb https://cran.cnr.berkeley.edu/bin/linux/ubuntu xenial/' >> /etc/apt/sources.list # for some reason this was gone
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+apt-get update
+apt-get upgrade
+apt-get upgrade r-base-dev
+```
+
+update bioconductor
+```
+sudo R
+source("https://bioconductor.org/biocLite.R")
+biocLite()
+q()
+```
+
+update packages that are in the user library
+```
+R
+pkgs <- dir("~/R/x86_64-pc-linux-gnu-library/3.3") 
+install.packages(pkgs)
+install.packages('rsconnect')
+source("https://bioconductor.org/biocLite.R")
+biocLite(c("goseq","PSMix","Rsubread","rtracklayer"))
+```
+
+Make system R library user modifiable (#normally not recommended)
+```
+sudo chown -R ubuntu /usr/local/lib/R 
+```
+
+```
+sudo chown -R root:root /data
+sudo chmod 0755 /data
+```
+
+```
+sudo apt-get install ruby-dev nodejs
+```
+
