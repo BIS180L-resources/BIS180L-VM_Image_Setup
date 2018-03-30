@@ -1,14 +1,14 @@
 # Notes for next year
 
 ## For instance
-* remove gitk and and git_kraken
-* fix whitespace issue in atom 
+* **Can't find it** remove gitk and and git_kraken
+* **appears to be autofixed in new version** fix whitespace issue in atom 
 * **done** make /data read only
-* remove screen saver
+* **done (disabled)** remove screen saver
 * **done** Fix swirl: `sudo chown -R ubuntu /usr/local/lib/R/site-library/swirl/`
 * **done** install.packages('rsconnect') # instead of shinyapps
 * **done** sudo apt-get install ruby-dev nodejs #needed for bundler, etc to display website locally
-* install https://github.com/rajanil/fastStructure
+* **done** _but need to work on an alias_ install https://github.com/rajanil/fastStructure
 * install trimmomatic
 * install autobarcode
 * install star

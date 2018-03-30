@@ -535,3 +535,30 @@ sudo chmod 0755 /data
 sudo apt-get install ruby-dev nodejs
 ```
 
+## fastStructure
+
+```
+sudo apt-get install cython
+```
+
+
+```
+sudo -s
+cd /usr/local/src/
+sudo git clone https://github.com/rajanil/fastStructure
+cd /usr/local/src/fastStructure/
+git fetch
+git merge origin/master
+updatedb
+locate gsl_sf_psi.h
+locate libgslcblas.so
+locate libgsl.so
+set -x LDFLAGS "-L/usr/lib/x86_64-linux-gnu"
+set -x CFLAGS "-I/usr/include"
+set -x LD_LIBRARY_PATH /usr/lib/x86_64-linux-gnu
+cd vars
+python setup.py build_ext --inplace
+cd ../
+python setup.py build_ext --inplace
+alias "fastStructure" "python /usr/local/src/fastStructure/structure.py" 
+```
