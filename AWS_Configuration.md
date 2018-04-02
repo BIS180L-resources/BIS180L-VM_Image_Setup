@@ -562,3 +562,65 @@ cd ../
 python setup.py build_ext --inplace
 alias "fastStructure" "python /usr/local/src/fastStructure/structure.py" 
 ```
+
+## igv
+
+```
+sudo apt-get remove igv #apt version is old and doesn't work well
+```
+
+go to [igv downloads](http://software.broadinstitute.org/software/igv/download) and download the binary version (currently 2.4.10) and igvtools (currently 2.3.98)
+
+```
+cd Downloads/
+unzip IGV_2.4.10.zip 
+unzip igvtools_2.3.98.zip 
+sudo mv IGV_2.4.10/ /usr/local/src
+sudo mv igvtools_2.3.98.zip /usr/local/src
+sudo mv IGVTools/ /usr/local/src
+sudo mv IGV_2.4.10.zip /usr/local/src
+sudo ln -s /usr/local/src/IGV_2.4.10/igv.sh /usr/local/bin
+sudo ln -s /usr/local/src/IGVTools/igvtools /usr/local/bin
+sudo ln -s /usr/local/src/IGVTools/igvtools_gui /usr/local/bin
+```
+
+update launcher...
+
+## update rstudio
+
+download from https://www.rstudio.com/products/rstudio/download/#download
+
+```
+cd Downloads
+sudo gdebi rstudio-xenial-1.1.442-amd64\ \(1\).deb
+```
+
+## remove MEGAsync
+
+```
+sudo apt-get --purge remove megasync
+```
+
+## STAR
+
+Download from https://github.com/alexdobin/STAR/blob/master/bin/Linux_x86_64/STAR
+
+```
+cd Downloads/
+chmod 0755 STAR
+sudo mv STAR /usr/local/bin
+```
+
+## update GATK
+Download from https://software.broadinstitute.org/gatk/download/; version 4.0.3.0
+
+```
+cd Downloads/
+unzip gatk-4.0.3.0.zip 
+sudo mv gatk-4.0.3.0* /usr/local/src
+sudo ln -s /usr/local/src/gatk-4.0.3.0/gatk /usr/local/bin/gatk
+```
+
+## screenshooter
+
+Add panel for screenshooter via the GUI

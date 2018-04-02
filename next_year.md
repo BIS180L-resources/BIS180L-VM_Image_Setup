@@ -11,11 +11,11 @@
 * **done** _but need to work on an alias_ install https://github.com/rajanil/fastStructure
 * install trimmomatic
 * install autobarcode
-* install star
-* IGV DOESN'T WORK.  DO IT RIGHT!!! (Get from website, not apt-get)
-* Freebayes...currently have to use version 1.0.2
+* **done** install star
+* **done** IGV DOESN'T WORK.  DO IT RIGHT!!! (Get from website, not apt-get)
+* **done (version v1.1.0-60-gc15b070 works)** Freebayes...currently have to use version 1.0.2
 * installation sources should go in /usr/local/src not /usr/src
-* make screenshot work
+* **done** make screenshot work
 
 ## For labs
 
