@@ -624,3 +624,18 @@ sudo ln -s /usr/local/src/gatk-4.0.3.0/gatk /usr/local/bin/gatk
 ## screenshooter
 
 Add panel for screenshooter via the GUI
+
+## vnc fix
+
+John's notes for fixing vncserver
+
+> Okay everything is all set. Tigervnc now runs on version 1.8. The problem most likely occurred due to the .pid file not being created in the ~/.vnc folder. Not sure why it was not created, but that was causing the startup process to fail. If the problem occurs again, this method worked for me. This manually created the .pid file for me allowing me kill the process. My suspicion is that changing the elastic ip address might have caused the issue.
+
+```
+vncserver -kill :1 # Failed so did the following
+vncserver -depth 24 -geometry 1280x800 :1 
+sudo systemctl daemon-reload
+sudo systemctl enable vncserver@1.service
+sudo systemctl start vncserver@1 
+sudo systemctl status vncserver@1 # Working
+```
