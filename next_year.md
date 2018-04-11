@@ -66,3 +66,8 @@ Are the reps technical?  Prob not
 Change the word "predominant" in the Qs
 
 
+# 2018 notes for 2019
+
+## Linux Lab
+
+Change from Korf to http://linuxcommand.org/?
