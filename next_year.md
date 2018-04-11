@@ -2,7 +2,6 @@
 
 ## For instance
 * **Can't find it** remove gitk and and git_kraken
-* **appears to be autofixed in new version** fix whitespace issue in atom 
 * **done** make /data read only
 * **done (disabled)** remove screen saver
 * **done** Fix swirl: `sudo chown -R ubuntu /usr/local/lib/R/site-library/swirl/`
@@ -16,6 +15,11 @@
 * **done (version v1.1.0-60-gc15b070 works)** Freebayes...currently have to use version 1.0.2
 * installation sources should go in /usr/local/src not /usr/src
 * **done** make screenshot work
+
+## For Instance 2019
+
+* fix whitespace issue in atom **reinstall atom...and if needed turn off whitespace package**
+
 
 ## For labs (now updating for 2019)
 
