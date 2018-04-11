@@ -17,11 +17,13 @@
 * installation sources should go in /usr/local/src not /usr/src
 * **done** make screenshot work
 
-## For labs
+## For labs (now updating for 2019)
 
 ### Water Lab
 
-Remove
+Remove...
+
+Or if keeping, redo "how long does it take" questions because they don't quite make sense now given how "part 5" is worded.
 
 ### BLAST Lab
 
