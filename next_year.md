@@ -19,7 +19,7 @@
 ## For Instance 2019
 
 * fix whitespace issue in atom **reinstall atom...and if needed turn off whitespace package**
-
+* R packages: learnr, tidyverse
 
 ## For labs (now updating for 2019)
 
