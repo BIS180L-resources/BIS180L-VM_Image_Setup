@@ -20,6 +20,8 @@
 
 * fix whitespace issue in atom **reinstall atom...and if needed turn off whitespace package**
 * R packages: learnr, tidyverse
+* Replace /data with files that do not have multiple isoforms!!!
+
 
 ## For labs (now updating for 2019)
 
@@ -28,6 +30,7 @@
 Remove...
 
 Or if keeping, redo "how long does it take" questions because they don't quite make sense now given how "part 5" is worded.
+
 
 ### BLAST Lab
 
