@@ -25,6 +25,10 @@
 
 ## For labs (now updating for 2019)
 
+## Midterm
+
+Be careful about blastx, blastp, etc
+
 ### Water Lab
 
 Remove...
@@ -36,13 +40,11 @@ Or if keeping, redo "how long does it take" questions because they don't quite m
 
 Change paralog search to use a proteome file that does not have all the different isoforms
 
-Extend the lab into R so that we find all orthologs
-
 use for annotation of a genome
 
 #### Rice SNPs
 
-Change to use fastStructure instead of PSMix
+use separate template files for SNPs and GWAS.
 
 #### Rice GWAS
 
