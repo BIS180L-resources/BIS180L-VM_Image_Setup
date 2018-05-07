@@ -46,6 +46,8 @@ use for annotation of a genome
 
 use separate template files for SNPs and GWAS.
 
+change code so that we don't join_ back into objects with same name.
+
 #### Rice GWAS
 
 Change to GAPIT
