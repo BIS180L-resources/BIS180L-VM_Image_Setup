@@ -21,6 +21,7 @@
 * fix whitespace issue in atom **reinstall atom...and if needed turn off whitespace package**
 * R packages: learnr, tidyverse
 * Replace /data with files that do not have multiple isoforms!!!
+* Make default Rstudio terminal fish
 
 
 ## For labs (now updating for 2019)
