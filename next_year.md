@@ -21,6 +21,7 @@
 * fix whitespace issue in atom **reinstall atom...and if needed turn off whitespace package**
 * R packages: learnr, tidyverse
 * Replace /data with files that do not have multiple isoforms!!!
+* Make default Rstudio terminal fish
 
 
 ## For labs (now updating for 2019)
@@ -63,6 +64,8 @@ https://github.com/MikkelSchubert/adapterremoval
 change the lab so that rownames are not used in the code; no one loads it in with rownames = geneID
 
 provide the DE gene lists so that everyone starts with the same file.
+
+maybe add pathview
 
 #### Clustering
 
