@@ -55,7 +55,9 @@ Change to GAPIT
 
 #### Illumina
 
-Change to STAR
+Change to STAR?
+
+https://github.com/MikkelSchubert/adapterremoval
 
 #### RNAseq GO terms
 
