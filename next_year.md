@@ -69,6 +69,8 @@ maybe add pathview
 
 Is the gene expression normalized?  Doesn't seem like it...
 
+Instead of using GxE data set, use 1,000 most variable (maybe already changed in networks 2, but update networks 1)
+
 #### Metagenomics
 
 increase sample size?
