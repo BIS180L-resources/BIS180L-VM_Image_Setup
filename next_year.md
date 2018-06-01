@@ -26,6 +26,10 @@
 
 ## For labs (now updating for 2019)
 
+## Linux Lab
+
+Change from Korf to http://linuxcommand.org/?
+
 ## Midterm
 
 Be careful about blastx, blastp, etc
@@ -73,6 +77,8 @@ Is the gene expression normalized?  Doesn't seem like it...
 
 Instead of using GxE data set, use 1,000 most variable (maybe already changed in networks 2, but update networks 1)
 
+Redo this to ask more biological questions:hub genes, GO enrichment, etc.  Add WGCNA?
+
 #### Metagenomics
 
 increase sample size?
@@ -80,8 +86,5 @@ Are the reps technical?  Prob not
 Change the word "predominant" in the Qs
 
 
-# 2018 notes for 2019
 
-## Linux Lab
 
-Change from Korf to http://linuxcommand.org/?
