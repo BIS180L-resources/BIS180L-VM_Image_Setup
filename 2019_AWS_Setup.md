@@ -154,3 +154,13 @@ wget https://download1.rstudio.org/rstudio-xenial-1.1.463-amd64.deb
 sudo gdebi rstudio-xenial-1.1.463-amd64.deb
 sudo rm rstudio-xenial-1.1.463-amd64.deb
 ```
+
+### Installing R packages within Rstudio under /home/ubuntu/R/x86_64-pc-linux-gnu-library/3.5 [Default]
+```
+swirl,ggplot2,genetics,hwde,GenABEL,seqinr,qtl,LDheatmap,evaluate,formatR,highr,markdown,yaml,htmltools,caTools,bitops,knitr,rmarkdown,devtols,shiny,pvclust,gplots,cluster,igraph,scatterplot3d,ape,SNPassoc,rsconnect
+devtools::install_github("rstudio/shinyapps")
+devtools::install_github(repo = "cran/PSMix")
+source("http://bioconductor.org/biocLite.R")
+biocLite()
+biocLite(c("Rsubread","rtracklayer","goseq","impute","multtest","VariantAnnotation","PSMix","chopsticks","edgeR"))
+```
