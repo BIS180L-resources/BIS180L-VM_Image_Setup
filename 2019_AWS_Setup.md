@@ -98,5 +98,4 @@ apt-get install r-base
 apt-get install r-base-dev
 ```
 
-
-```
+# RSTUDIO CRASHING!!!!
