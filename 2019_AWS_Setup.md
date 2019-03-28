@@ -400,8 +400,21 @@ cd vars
 sudo python setup.py build_ext --inplace
 cd ../
 sudo python setup.py build_ext --inplace
-alias "fastStructure" "python /usr/local/src/fastStructure/structure.py"
+cd /usr/local/bin
+sudo nano fastStructure
 ```
+add in following
+
+```
+#!/bin/bash
+python /usr/local/src/fastStructure/structure.py
+```
+make executable
+
+```
+sudo chmod 755 fastStructure
+```
+
 
 ### igv
 go to [igv downloads](http://software.broadinstitute.org/software/igv/download) and download the binary version (currently 2.5.0)
