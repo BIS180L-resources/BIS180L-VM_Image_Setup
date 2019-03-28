@@ -135,6 +135,12 @@ apt-get install perl-doc
 apt-get install libtext-table-perl
 apt-get install gdebi-core
 apt-get install cmake
+apt-get install gedit gir1.2-gtksource-3.0
+apt-get install emboss
+apt install default-jdk
+apt install openjdk-8-jdk
+apt-get install python-pip python-numpy python-scipy
+pip install --upgrade pip
 ```
 
 ### Installing latest R
@@ -163,4 +169,152 @@ source("http://bioconductor.org/biocLite.R")
 biocLite()
 biocLite(c("Rsubread","snpStats","rtracklayer","goseq","impute","multtest","VariantAnnotation","chopsticks","edgeR"))
 install.packages('LDheatmap')
+```
+
+### Installing libre office 
+
+```
+sudo apt-get install libreoffice-writer libreoffice-calc
+```
+
+### Installing git viewer
+
+```
+sudo apt-get install gitg
+```
+
+### Installing Jalview
+
+```
+sudo apt-get install jalview
+```
+
+### Installing Others
+
+```
+sudo apt-get install seaview
+sudo apt-get install clustalw clustalx kalign t-coffee muscle mafft probcons
+```
+
+
+### Installing BWA
+
+```
+cd /usr/local/src
+sudo git clone https://github.com/lh3/bwa.git
+cd bwa; sudo make
+cd /usr/local/bin
+sudo ln -s /usr/local/src/bwa/bwa
+```
+
+### Installing Bowtie
+
+```
+cd /usr/local/src
+sudo wget https://downloads.sourceforge.net/project/bowtie-bio/bowtie/1.1.2/bowtie-1.1.2-linux-x86_64.zip
+unzip bowtie-1.1.2-linux-x86_64.zip
+cd /usr/local/bin
+sudo ln -sf ../src/bowtie-1.1.2/bowtie .
+
+```
+
+### Installing Bowtie2
+
+```
+cd /usr/local/src
+wget sudo wget https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.3.5/bowtie2-2.3.5-linux-x86_64.zip
+sudo unzip bowtie2-2.3.5-linux-x86_64.zip
+cd /usr/local/bin
+sudo cp -sf ../src/bowtie2-2.3.5-linux-x86_64/bowtie2 .
+```
+
+### Installing Tophat
+
+```
+cd /usr/local/src
+sudo wget https://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.1.Linux_x86_64.tar.gz
+sudo tar xvfz tophat-2.1.1.Linux_x86_64.tar.gz
+cd /usr/local/bin
+sudo ln -s ../src/tophat-2.1.1.Linux_x86_64/tophat .
+```
+
+### Installing Samtools
+
+```
+cd /usr/local/src
+sudo wget https://github.com/samtools/samtools/releases/download/1.9/samtools-1.9.tar.bz2
+sudo tar xvfj samtools-1.9.tar.bz2
+cd samtools-1.9
+sudo ./configure --prefix=/usr/local/src/samtools-1.9
+sudo make
+sudo make install
+cd /usr/local/bin
+sudo cp -s ../src/samtools-1.9/bin/samtools .
+```
+
+### Installing Bedtools2
+
+```
+cd /usr/local/src
+sudo wget https://github.com/arq5x/bedtools2/releases/download/v2.28.0/bedtools-2.28.0.tar.gz
+sudo tar -zxvf bedtools-2.28.0.tar.gz
+cd bedtools2
+sudo make
+cd /usr/local/bin
+sudo cp -s /usr/local/src/bedtools2/bin/* .
+```
+
+### Installing Fastqc
+
+```
+cd /usr/local/src
+sudo wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.8.zip
+sudo unzip fastqc_v0.11.8.zip
+cd FastQC/
+sudo chmod 0755 fastqc
+cd /usr/local/bin
+sudo cp -s ../src/FastQC/fastqc .
+```
+
+### Installing Cufflinks
+
+```
+cd /usr/local/src
+sudo wget http://cole-trapnell-lab.github.io/cufflinks/assets/downloads/cufflinks-2.2.1.Linux_x86_64.tar.gz
+sudo tar -xvzf cufflinks-2.2.1.Linux_x86_64.tar.gz
+cd /usr/local/bin
+sudo cp -sf ../src/cufflinks-2.2.1.Linux_x86_64/cuff* .
+sudo cp -sf ../src/cufflinks-2.2.1.Linux_x86_64/g* .
+```
+
+### Markdown viewer: Remarkable
+
+```
+sudo wget https://remarkableapp.github.io/files/remarkable_1.87_all.deb
+sudo gdebi remarkable_1.87_all.deb
+```
+
+### Installing MACS2
+
+```
+sudo pip install MACS2
+```
+
+### Installing Cytoscape
+
+```
+cd /usr/local/src
+sudo wget https://github.com/cytoscape/cytoscape/releases/download/3.7.1/Cytoscape_3_7_1_unix.sh
+sudo chmod 755 Cytoscape_3_7_1_unix.sh
+sudo ./Cytoscape_3_7_1_unix.sh
+```
+
+### Installing FreeBayes
+
+```
+cd /usr/local/src
+sudo git clone --recursive git://github.com/ekg/freebayes.git
+cd freebayes
+sudo make
+sudo make install
 ```
