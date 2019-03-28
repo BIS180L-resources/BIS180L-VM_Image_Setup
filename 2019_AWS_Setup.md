@@ -135,10 +135,12 @@ apt-get install perl-doc
 apt-get install libtext-table-perl
 apt-get install gdebi-core
 apt-get install cmake
+sudo apt-get install cython
 apt-get install gedit gir1.2-gtksource-3.0
 apt-get install emboss
 apt install default-jdk
 apt install openjdk-8-jdk
+apt-get install ruby-dev nodejs
 apt-get install python-pip python-numpy python-scipy
 pip install --upgrade pip
 ```
@@ -318,3 +320,111 @@ cd freebayes
 sudo make
 sudo make install
 ```
+
+### Installing GATK 4.1.0.0
+
+```
+cd /usr/local/src
+sudo wget https://github.com/broadinstitute/gatk/releases/download/4.1.0.0/gatk-4.1.0.0.zip
+sudo unzip gatk-4.1.0.0.zip
+cd /usr/local/bin
+sudo ln -s /usr/local/src/gatk-4.1.0.0/gatk .
+```
+
+### Installing Atom
+
+```
+sudo wget https://atom.io/download/deb
+sudo mv deb atom.deb
+sudo gdebi atom.deb
+```
+
+Add atom packages:
+
+* git-control
+* markdown-pdf
+* line-ending-converter
+* language-markdown
+* Sublime-Style-Column-Selection
+
+### Installing fish
+
+```
+sudo apt-get install fish
+```
+
+then
+
+```
+sudo vi /etc/passwd
+```
+
+And change the line for default shell to /usr/bin/fish, i.e.
+
+```
+ubuntu:x:1000:1000:Ubuntu:/home/ubuntu:/usr/bin/fish
+```
+
+```
+sudo shutdown -r now
+```
+
+### Nicer VIM colors
+
+create `~/.vimrc` and add
+
+    :color desert
+    
+### Ensure encrypted VNC connection
+
+Edit `~/.vnc/config` and uncomment and edit the SecurityTypes line to be:
+
+    securitytypes=tlsvnc
+
+### fastStructure
+
+```
+cd /usr/local/src/
+sudo git clone https://github.com/rajanil/fastStructure
+cd /usr/local/src/fastStructure/
+sudo git fetch
+sudo git merge origin/master
+sudo updatedb
+sudo locate gsl_sf_psi.h
+sudo locate libgslcblas.so
+sudo locate libgsl.so
+set -x LDFLAGS "-L/usr/lib/x86_64-linux-gnu"
+set -x CFLAGS "-I/usr/include"
+set -x LD_LIBRARY_PATH /usr/lib/x86_64-linux-gnu
+cd vars
+sudo python setup.py build_ext --inplace
+cd ../
+sudo python setup.py build_ext --inplace
+alias "fastStructure" "python /usr/local/src/fastStructure/structure.py"
+```
+
+### igv
+go to [igv downloads](http://software.broadinstitute.org/software/igv/download) and download the binary version (currently 2.5.0)
+
+```
+cd Downloads/
+unzip IGV_Linux_2.5.0.zip 
+sudo mv IGV_Linux_2.5.0/ /usr/local/src
+sudo ln -s /usr/local/src/IGV_Linux_2.5.0/igv.sh /usr/local/bin
+```
+
+### STAR
+
+Download from https://github.com/alexdobin/STAR
+
+```
+cd /usr/local/src
+sudo wget https://github.com/alexdobin/STAR/archive/2.7.0e.tar.gz
+sudo tar -xzf 2.7.0e.tar.gz
+cd /usr/local/bin
+ln -s /usr/local/src/STAR-2.7.0e/bin/Linux_x86_64/STAR .
+```
+
+## screenshooter
+
+Add panel for screenshooter via the GUI
