@@ -165,7 +165,7 @@ sudo rm rstudio-xenial-1.1.463-amd64.deb
 
 ### Installing R packages within Rstudio under /home/ubuntu/R/x86_64-pc-linux-gnu-library/3.5 [Default]
 ```
-swirl,ggplot2,genetics,hwde,seqinr,qtl,evaluate,formatR,highr,markdown,yaml,htmltools,caTools,bitops,knitr,rmarkdown,devtools,shiny,pvclust,gplots,cluster,igraph,scatterplot3d,ape,SNPassoc,rsconnect,dplyr,tidyverse,learnr
+install.packages(c('swirl','ggplot2','genetics','hwde','seqinr','qtl','evaluate','formatR','highr','markdown','yaml','htmltools','caTools','bitops','knitr','rmarkdown','devtools','shiny','pvclust','gplots','cluster','igraph','scatterplot3d','ape','SNPassoc','rsconnect','dplyr','tidyverse','learnr'))
 devtools::install_github(repo = "cran/PSMix")
 source("http://bioconductor.org/biocLite.R")
 biocLite()
