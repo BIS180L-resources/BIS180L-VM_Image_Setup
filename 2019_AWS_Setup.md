@@ -278,6 +278,17 @@ cd /usr/local/bin
 sudo cp -s ../src/FastQC/fastqc .
 ```
 
+### Installing seqtk
+
+```
+cd /usr/local/src
+sudo git clone https://github.com/lh3/seqtk.git
+cd seqtk
+sudo make
+cd /usr/local/bin
+sudo ln -s /usr/local/src/seqtk/seqtk .
+```
+
 ### Installing Cufflinks
 
 ```
