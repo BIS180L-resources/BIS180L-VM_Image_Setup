@@ -358,6 +358,8 @@ Add atom packages:
 * language-markdown
 * Sublime-Style-Column-Selection
 
+In atom, go to preferences and diable the 'whitespace' package
+
 ### Installing fish
 
 ```
