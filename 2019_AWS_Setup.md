@@ -390,9 +390,9 @@ create `~/.vimrc` and add
     
 ### Ensure encrypted VNC connection
 
-Edit `~/.vnc/config` and uncomment and edit the SecurityTypes line to be:
+Edit `~/.vnc/config` and uncomment the SecurityTypes line:
 
-    securitytypes=tlsvnc
+    securitytypes=vncauth,tlsvnc
 
 ### fastStructure
 
