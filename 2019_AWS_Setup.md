@@ -459,3 +459,4 @@ Add panel for screenshooter via the GUI
  Used current public releases for C.elegan and D.melanogaster.
  Used Araport 11 for A.thaliana
 
+Data used in the class can be downloaded [here](http://malooflab.phytonetworks.org/media/maloof-lab/filer_public/19/57/1957e4b4-d140-4b3a-82c2-a8dc576f2bc9/bis180l_class_data_2019tar.gz)
