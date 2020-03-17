@@ -30,6 +30,7 @@ vncserver -kill :1
 mv ~/.vnc/xstartup ~/.vnc/xstartup.bak
 nano ~/.vnc/xstartup
 ```
+```
 #!/bin/bash
 xrdb $HOME/.Xresources
 startxfce4 &
