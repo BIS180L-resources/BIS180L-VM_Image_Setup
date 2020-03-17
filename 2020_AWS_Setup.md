@@ -11,6 +11,7 @@ Contents of Base Instance
   4. Security, All TCP
   5. Elastic IP (Since been released)
 
+```
 sudo apt-get update
 sudo apt-get upgrade
 sudo nano /etc/ssh/sshd_config
