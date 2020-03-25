@@ -471,3 +471,41 @@ rm bis180l_class_data_2020tar.gz
 ```
 
 ## Added script to change student's VNC connection to secure
+
+## Installing MAFFT
+```
+wget https://mafft.cbrc.jp/alignment/software/mafft_7.450-1_amd64.deb
+sudo dpkg -i mafft_7.450-1_amd64.deb
+rm mafft_7.450-1_amd64.deb
+```
+
+## Installing FastTree
+```
+cd /usr/local/bin
+sudo wget http://microbesonline.org/fasttree/FastTree
+sudo chmod +x FastTree
+```
+
+## Installing Dendroscope
+```
+cd /usr/local/bin
+sudo wget https://software-ab.informatik.uni-tuebingen.de/download/dendroscope/Dendroscope_unix_3_7_2.sh
+sudo chmod +x Dendroscope_unix_3_7_2.sh
+# run installer accept all defaults
+./Dendroscope_unix_3_7_2.sh
+# place icon on dock
+```
+
+## Install MEGA
+```
+# GUI includes CC
+wget https://www.megasoftware.net/do_force_download/megax_10.1.7-1_amd64.deb
+sudo dpkg -i megax_10.1.7-1_amd64.deb
+rm megax_10.1.7-1_amd64.deb
+
+```
+## MISC
+Added Rstudio, Atom, and IGV icons to the dock
+Unchecked locale box on Atom::spell-check
+Added COVID data to data folder
+
