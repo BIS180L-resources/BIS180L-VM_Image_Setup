@@ -126,3 +126,91 @@ Copy `vnc-server.pem` to own computer
 ```
 sudo shutdown -r now
 ```
+
+### Installing Necessary Libraries and Programs
+
+```
+sudo -i
+apt-get install chromium-browser
+apt-get install curl 
+apt-get install libcurl4-openssl-dev #needed for bioconductor
+apt-get install libboost-iostreams-dev
+apt-get install libgsl0-dev
+apt-get install libmysql++-dev
+apt-get install libboost-graph-dev
+apt-get install libgl1-mesa-dev #for rgl
+apt-get install libglu1-mesa-dev #for rgl
+apt-get install libmysqlclient-dev #for R mysql
+apt-get install libfontconfig1-dev
+apt-get install libmpfr-dev
+apt-get install libgmp-dev
+apt-get install openmpi-bin 
+apt-get install libopenmpi-dev
+apt-get install ncbi-blast+ 
+apt-get install ncbi-blast+-legacy
+apt-get install mysql-client 
+apt-get install mysql-server #password for root = Genomics
+apt-get install libssl-dev
+apt-get install libudunits2-dev
+apt-get install libxml2-dev
+apt-get install cargo
+apt-get install libcairo2-dev
+apt-get install libmagick++-dev 
+apt-get install libxslt1-dev
+apt-get install libgeos-dev
+apt-get install libgdal-dev
+apt-get install libpq-dev
+apt-get install texlive-latex-extra 
+apt-get install texlive-fonts-recommended
+apt-get install dkms
+apt-get install liblist-moreutils-perl 
+apt-get install libstatistics-descriptive-perl
+apt-get install libstatistics-r-perl 
+apt-get install perl-doc 
+apt-get install libtext-table-perl
+apt-get install gdebi-core
+apt-get install cmake
+apt-get install cython
+apt-get install gedit gir1.2-gtksource-3.0
+apt-get install emboss
+apt install default-jdk
+apt install openjdk-8-jdk
+apt-get install ruby-dev nodejs
+apt-get install python-pip python-numpy python-scipy
+apt-get install python3-pip python3-numpy python3-scipy
+pip install --upgrade pip
+pip3 install --upgrade pip
+exit
+```
+
+### Installing latest R
+```
+# update indices
+sudo apt update -qq
+# install two helper packages we need
+sudo apt install --no-install-recommends software-properties-common dirmngr
+# import the signing key (by Michael Rutter) for these repo
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+# add the R 4.0 repo from CRAN
+sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -sc)-cran40/"
+# install R
+sudo apt install --no-install-recommends r-base r-base-dev
+```
+
+### Installing Rstudio and make launcher
+```
+wget https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.4.1106-amd64.deb
+sudo gdebi rstudio-1.4.1106-amd64.deb
+rm rstudio-1.4.1106-amd64.deb
+```
+
+### Installing R packages within Rstudio under /home/ubuntu/R/x86_64-pc-linux-gnu-library/3.6 [Default]
+```
+R
+install.packages(c('swirl','ggplot2','genetics','hwde','seqinr','qtl','evaluate','formatR','highr','markdown','yaml','htmltools','caTools','bitops','knitr','rmarkdown','devtools','shiny','pvclust','gplots','cluster','igraph','scatterplot3d','ape','SNPassoc','rsconnect','dplyr','tidyverse','learnr'), dependencies=T)
+devtools::install_github(repo = "cran/PSMix")
+# Install Biocondutor packages    
+install.packages("BiocManager")
+BiocManager::install(c("Rsubread","snpStats","rtracklayer","goseq","impute","multtest","VariantAnnotation","chopsticks","edgeR"))
+install.packages('LDheatmap')
+```
