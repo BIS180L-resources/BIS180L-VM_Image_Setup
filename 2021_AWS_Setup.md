@@ -219,3 +219,329 @@ devtools::install_github(repo = "jiabowang/GAPIT3", force=TRUE)
 install.packages('LDheatmap')
 install.packages('SNPassoc')
 ```
+
+### Installing git viewer
+
+```
+sudo apt-get install gitg
+```
+
+### Install git-it desktop
+
+```
+cd /usr/local/src
+sudo wget https://github.com/jlord/git-it-electron/releases/download/4.4.0/Git-it-Linux-x64.zip
+sudo unzip Git-it-Linux-x64.zip
+sudo rm Git-it-Linux-x64.zip
+cd
+```
+
+### Installing Jalview
+
+```
+sudo apt-get install jalview
+```
+
+### Installing Others
+
+```
+sudo apt-get install seaview
+sudo apt-get install clustalw clustalx kalign t-coffee muscle mafft probcons
+```
+
+### Installing BLAST 2.11.0+ from NCBI
+
+```
+cd /usr/local/src
+sudo wget https://ftp.ncbi.nlm.nih.gov/blast/executables/LATEST/ncbi-blast-2.11.0+-x64-linux.tar.gz
+sudo tar zxvpf ncbi-blast-2.11.0+-x64-linux.tar.gz
+sudo rm ncbi-blast-2.11.0+-x64-linux.tar.gz
+cd /usr/bin
+sudo ln -sf /usr/local/src/ncbi-blast-2.11.0+/bin/* .
+```
+
+### Installing BWA
+
+```
+cd /usr/local/src
+sudo git clone https://github.com/lh3/bwa.git
+cd bwa; sudo make
+cd /usr/local/bin
+sudo ln -s /usr/local/src/bwa/bwa .
+```
+
+### Installing Bowtie
+
+```
+cd /usr/local/src
+sudo wget https://sourceforge.net/projects/bowtie-bio/files/bowtie/1.3.0/bowtie-1.3.0-linux-x86_64.zip/download
+sudo unzip download
+sudo rm download
+cd /usr/local/bin
+sudo ln -s /usr/local/src/bowtie-1.3.0-linux-x86_64/bowtie .
+sudo ln -s /usr/local/src/bowtie-1.3.0-linux-x86_64/bowtie-build .
+sudo ln -s /usr/local/src/bowtie-1.3.0-linux-x86_64/bowtie-inspect .
+```
+
+### Installing Bowtie2
+
+```
+cd /usr/local/src
+sudo wget https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.4.2/bowtie2-2.4.2-linux-x86_64.zip
+sudo unzip bowtie2-2.4.2-linux-x86_64.zip
+sudo rm bowtie2-2.4.2-linux-x86_64.zip
+cd /usr/local/bin
+sudo ln -s /usr/local/src/bowtie2-2.4.2-linux-x86_64/bowtie2 .
+sudo ln -s /usr/local/src/bowtie2-2.4.2-linux-x86_64/bowtie2-build .
+sudo ln -s /usr/local/src/bowtie2-2.4.2-linux-x86_64/bowtie2-inspect .
+```
+
+### Installing Tophat
+
+```
+cd /usr/local/src
+sudo wget https://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.1.Linux_x86_64.tar.gz
+sudo tar xvfz tophat-2.1.1.Linux_x86_64.tar.gz
+sudo rm tophat-2.1.1.Linux_x86_64.tar.gz
+cd /usr/local/bin
+sudo ln -s /usr/local/src/tophat-2.1.1.Linux_x86_64/tophat .
+```
+
+### Installing Samtools
+
+```
+cd /usr/local/src
+sudo wget https://github.com/samtools/samtools/releases/download/1.12/samtools-1.12.tar.bz2
+sudo tar xvfj samtools-1.12.tar.bz2
+sudo rm samtools-1.12.tar.bz2
+cd samtools-1.12
+sudo ./configure --prefix=/usr/local/src/samtools-1.12
+sudo make
+sudo make install
+cd /usr/local/bin
+sudo ln -s /usr/local/src/samtools-1.12/bin/samtools .
+```
+
+### Installing Bedtools2
+
+```
+cd /usr/local/src
+sudo wget https://github.com/arq5x/bedtools2/releases/download/v2.30.0/bedtools-2.30.0.tar.gz
+sudo tar -zxvf bedtools-2.30.0.tar.gz
+sudo rm bedtools-2.30.0.tar.gz
+cd bedtools2
+sudo make
+cd /usr/local/bin
+sudo ln -s /usr/local/src/bedtools2/bin/* .
+```
+
+### Installing Fastqc
+
+```
+cd /usr/local/src
+sudo wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip
+sudo unzip fastqc_v0.11.9.zip
+sudo rm fastqc_v0.11.9.zip
+cd FastQC/
+sudo chmod 0755 fastqc
+cd /usr/local/bin
+sudo cp -s ../src/FastQC/fastqc .
+```
+
+### Installing seqtk
+
+```
+cd /usr/local/src
+sudo git clone https://github.com/lh3/seqtk.git
+cd seqtk
+sudo make
+cd /usr/local/bin
+sudo ln -s /usr/local/src/seqtk/seqtk .
+```
+
+### Installing Cufflinks
+
+```
+cd /usr/local/src
+sudo wget http://cole-trapnell-lab.github.io/cufflinks/assets/downloads/cufflinks-2.2.1.Linux_x86_64.tar.gz
+sudo tar -xvzf cufflinks-2.2.1.Linux_x86_64.tar.gz
+sudo rm cufflinks-2.2.1.Linux_x86_64.tar.gz
+cd /usr/local/bin
+sudo ln -s /usr/local/src/cufflinks-2.2.1.Linux_x86_64/cuff* .
+sudo ln -s /usr/local/src/cufflinks-2.2.1.Linux_x86_64/g* .
+```
+
+### Markdown viewer: Remarkable
+
+```
+cd /usr/local/src
+sudo wget https://remarkableapp.github.io/files/remarkable_1.87_all.deb
+sudo gdebi remarkable_1.87_all.deb
+sudo rm remarkable_1.87_all.deb
+```
+
+### Installing MACS2
+
+```
+sudo pip3 install MACS2
+```
+
+### Installing Cytoscape
+
+```
+cd /usr/local/src
+sudo wget https://github.com/cytoscape/cytoscape/releases/download/3.8.2/Cytoscape_3_8_2_unix.sh
+sudo chmod 755 Cytoscape_3_8_2_unix.sh
+sudo ./Cytoscape_3_8_2_unix.sh
+```
+
+### Installing FreeBayes
+
+```
+cd /usr/local/src
+sudo wget https://github.com/freebayes/freebayes/releases/download/v1.3.4/freebayes-1.3.4-linux-static-AMD64.gz
+sudo gunzip freebayes-1.3.4-linux-static-AMD64.gz
+sudo chmod +x freebayes-1.3.4-linux-static-AMD64
+cd /usr/local/bin
+sudo ln -s /usr/local/src/freebayes-1.3.4-linux-static-AMD64 freebayes
+```
+
+### Installing GATK 4.1.0.0
+
+```
+cd /usr/local/src
+sudo wget https://github.com/broadinstitute/gatk/releases/download/4.2.0.0/gatk-4.2.0.0.zip
+sudo unzip gatk-4.2.0.0.zip
+sudo rm gatk-4.2.0.0.zip
+cd /usr/local/bin
+sudo ln -s /usr/local/src/gatk-4.2.0.0/gatk .
+```
+
+### Installing Atom
+
+```
+sudo wget https://atom.io/download/deb
+sudo mv deb atom.deb
+sudo gdebi atom.deb
+sudo rm atom.deb
+```
+
+Add atom packages:
+
+* git-plus
+* markdown-pdf
+* line-ending-converter
+* language-markdown
+* Sublime-Style-Column-Selection
+
+In atom, go to preferences and disable the 'whitespace' package
+
+### fastStructure
+
+```
+cd /usr/local/src/
+sudo git clone https://github.com/rajanil/fastStructure
+cd /usr/local/src/fastStructure/
+sudo git fetch
+sudo git merge origin/master
+sudo updatedb
+sudo locate gsl_sf_psi.h
+sudo locate libgslcblas.so
+sudo locate libgsl.so
+set -x LDFLAGS "-L/usr/lib/x86_64-linux-gnu"
+set -x CFLAGS "-I/usr/include"
+set -x LD_LIBRARY_PATH /usr/lib/x86_64-linux-gnu
+cd vars
+sudo python setup.py build_ext --inplace
+cd ../
+sudo python setup.py build_ext --inplace
+cd /usr/local/bin
+sudo nano fastStructure
+```
+
+add in following
+
+```
+#!/bin/bash
+python /usr/local/src/fastStructure/structure.py
+```
+
+make executable
+
+```
+sudo chmod 755 fastStructure
+```
+
+### igv
+go to [igv downloads](http://software.broadinstitute.org/software/igv/download) and download the binary version (currently 2.9.4)
+
+```
+cd /usr/local/src
+sudo wget https://data.broadinstitute.org/igv/projects/downloads/2.9/IGV_Linux_2.9.4_WithJava.zip
+sudo unzip IGV_Linux_2.9.4_WithJava.zip
+sudo rm IGV_Linux_2.9.4_WithJava.zip
+sudo ln -s /usr/local/src/IGV_Linux_2.9.4/igv.sh /usr/local/bin/igv
+```
+
+### STAR
+
+Download from https://github.com/alexdobin/STAR
+
+```
+cd /usr/local/src
+sudo wget https://github.com/alexdobin/STAR/archive/2.7.8a.tar.gz
+sudo tar -xzf 2.7.8a.tar.gz
+sudo rm 2.7.8a.tar.gz
+cd /usr/local/bin
+sudo ln -s /usr/local/src/STAR-2.7.8a/bin/Linux_x86_64_static/STAR .
+```
+
+### Add class data to image
+
+```
+cd
+wget http://malooflab.phytonetworks.org/media/maloof-lab/filer_public/8f/d5/8fd59de6-e311-4d50-8320-acc58402982f/bis180l_class_data_2020tar.gz
+tar -xzvf bis180l_class_data_2020tar.gz
+rm bis180l_class_data_2020tar.gz
+```
+
+## Installing MAFFT
+```
+wget https://mafft.cbrc.jp/alignment/software/mafft_7.475-1_amd64.deb
+sudo dpkg -i mafft_7.475-1_amd64.deb
+rm mafft_7.475-1_amd64.deb
+```
+
+## Installing FastTree
+```
+cd /usr/local/bin
+sudo wget http://microbesonline.org/fasttree/FastTree
+sudo chmod +x FastTree
+```
+
+## Installing Dendroscope
+```
+cd /usr/local/bin
+sudo wget https://software-ab.informatik.uni-tuebingen.de/download/dendroscope/Dendroscope_unix_3_7_4.sh
+sudo chmod +x Dendroscope_unix_3_7_4.sh
+# run installer accept all defaults
+./Dendroscope_unix_3_7_4.sh
+# place icon on dock
+```
+
+## Install MEGA
+```
+# GUI includes CC
+wget https://www.megasoftware.net/do_force_download/megax_10.2.4-1_amd64.deb
+sudo dpkg -i megax_10.2.4-1_amd64.deb
+rm megax_10.2.4-1_amd64.deb
+```
+
+## MISC Need to do
+Add studio, Atom, and IGV icons to the dock
+Uncheck locale box on Atom::spell-check
+Add COVID data to data folder
+Add chromium icon
+Add make_secure.sh
+Run through labs
+Final cleanup and image push
