@@ -10,13 +10,11 @@ Contents of Base Instance
   3. 30Gb EBS storage
   4. Security
 
-| Type     | Protocol | Port Range | Source  | Description |
-|----------|----------|------------|---------|-------------|
-|HTTP      |TCP       |80          |0.0.0.0/0|Webhosting   |
-|HTTP      |TCP       |80          |::/0     |Webhosting   |
-|SSH       |TCP       |22          |0.0.0.0/0|SSH          |
-|Custom TCP|TCP       |5901        |0.0.0.0/0|VNC          |
-|Custom TCP|TCP       |5901        |::/0     |VNC          |
+| Type     | Protocol | Port Range | Source        | Description |
+|----------|----------|------------|---------------|-------------|
+|HTTP      |TCP       |80          |0.0.0.0/0, ::/0|Webhosting   |
+|SSH       |TCP       |22          |0.0.0.0/0, ::/0|SSH          |
+|Custom TCP|TCP       |5901        |0.0.0.0/0, ::/0|VNC          |
     
   5. Elastic IP (Since been released)
 
