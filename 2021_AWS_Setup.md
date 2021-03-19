@@ -100,8 +100,29 @@ Edit config file to include encryption and other settings
 
 ```
 cd ~/.vnc
+nano make_secure.sh
+```
+
+Add
+
+```
 myIP=$(hostname --ip-address)
-openssl req -x509 -newkey rsa -days 365 -nodes -config /usr/lib/ssl/openssl.cnf -keyout vnc-server-private.pem -out vnc-server.pem -subj '/CN=${myIP}' -addext 'subjectAltName=IP:${myIP}'
+openssl req \
+  -x509 \
+  -newkey rsa \
+  -days 365 \
+  -nodes \
+  -config /usr/lib/ssl/openssl.cnf \
+  -keyout vnc-server-private.pem \
+  -out vnc-server.pem \
+  -subj '/CN=${myIP}' \
+  -addext 'subjectAltName=IP:${myIP}'
+```
+
+Exit nano
+
+```
+chmod u+x make_secure.sh
 nano config
 ```
 Add
@@ -218,12 +239,22 @@ devtools::install_github(repo = "jiabowang/GAPIT3", force=TRUE)
 # Others that depend on above packages
 install.packages('LDheatmap')
 install.packages('SNPassoc')
+install.packages("EMMREML")
+devtools::install_github("YaoZhou89/BLINK")
 ```
 
 ### Installing git viewer
 
 ```
 sudo apt-get install gitg
+```
+
+### Install BFG
+
+```
+sudo wget -O /usr/local/src/bfg.jar https://repo1.maven.org/maven2/com/madgag/bfg/1.14.0/bfg-1.14.0.jar
+sudo bash -c 'echo "java -jar /usr/local/src/bfg.jar \$*" > /usr/local/bin/bfg'
+sudo chmod +x /usr/local/bin/bfg
 ```
 
 ### Install git-it desktop
@@ -234,6 +265,7 @@ sudo wget https://github.com/jlord/git-it-electron/releases/download/4.4.0/Git-i
 sudo unzip Git-it-Linux-x64.zip
 sudo rm Git-it-Linux-x64.zip
 cd
+# create desktop link to executable
 ```
 
 ### Installing Jalview
@@ -503,6 +535,9 @@ cd
 wget http://malooflab.phytonetworks.org/media/maloof-lab/filer_public/8f/d5/8fd59de6-e311-4d50-8320-acc58402982f/bis180l_class_data_2020tar.gz
 tar -xzvf bis180l_class_data_2020tar.gz
 rm bis180l_class_data_2020tar.gz
+put -r viralseq
+sudo chmod -R 555 viralseq
+sudo mv viralseq data
 ```
 
 ## Installing MAFFT
@@ -537,11 +572,11 @@ sudo dpkg -i megax_10.2.4-1_amd64.deb
 rm megax_10.2.4-1_amd64.deb
 ```
 
-## MISC Need to do
-Add studio, Atom, and IGV icons to the dock
+## MISC
+Turn off Rstudio default loading of last project and workspace
+Added Rstudio, Chromium, Atom, and IGV icons to the dock
 Uncheck locale box on Atom::spell-check
-Add COVID data to data folder
-Add chromium icon
-Add make_secure.sh
-Run through labs
+
+## Todo
 Final cleanup and image push
+Run through labs from student POV
