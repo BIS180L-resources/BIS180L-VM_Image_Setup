@@ -160,6 +160,7 @@ apt-get install libxslt1-dev
 apt-get install libgeos-dev
 apt-get install libgdal-dev
 apt-get install libpq-dev
+apt-get install libfftw3-3 libfftw3-dev
 apt-get install texlive-latex-extra 
 apt-get install texlive-fonts-recommended
 apt-get install dkms
@@ -204,13 +205,17 @@ sudo gdebi rstudio-1.4.1106-amd64.deb
 rm rstudio-1.4.1106-amd64.deb
 ```
 
-### Installing R packages within Rstudio under /home/ubuntu/R/x86_64-pc-linux-gnu-library/3.6 [Default]
+### Installing R packages within Rstudio under /home/ubuntu/R/x86_64-pc-linux-gnu-library/4.0 [Default]
 ```
-R
-install.packages(c('swirl','ggplot2','genetics','hwde','seqinr','qtl','evaluate','formatR','highr','markdown','yaml','htmltools','caTools','bitops','knitr','rmarkdown','devtools','shiny','pvclust','gplots','cluster','igraph','scatterplot3d','ape','SNPassoc','rsconnect','dplyr','tidyverse','learnr'), dependencies=T)
-devtools::install_github(repo = "cran/PSMix")
+# Cran packages
+install.packages(c('swirl','ggplot2','genetics','hwde','seqinr','qtl','evaluate','formatR','highr','markdown','yaml','htmltools','caTools','bitops','knitr','rmarkdown','devtools','shiny','pvclust','gplots','cluster','igraph','scatterplot3d','ape','rsconnect','dplyr','tidyverse','learnr','poisbinom'), dependencies=T)
 # Install Biocondutor packages    
 install.packages("BiocManager")
-BiocManager::install(c("Rsubread","snpStats","rtracklayer","goseq","impute","multtest","VariantAnnotation","chopsticks","edgeR"))
+BiocManager::install(c("Rsubread","BiocStyle","snpStats","rtracklayer","goseq","impute","multtest","VariantAnnotation","chopsticks","edgeR"))
+# Github packages
+devtools::install_github(repo = "cran/PSMix")
+devtools::install_github(repo = "jiabowang/GAPIT3", force=TRUE)
+# Others that depend on above packages
 install.packages('LDheatmap')
+install.packages('SNPassoc')
 ```
