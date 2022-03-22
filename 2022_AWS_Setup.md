@@ -17,19 +17,48 @@ Contents of Base Instance
   5. Elastic IP 35.85.197.232
 
 sudo apt update
-sudo apt upgrade
-sudo nano /etc/ssh/sshd_config
+sudo apt upgrade -y
+sudo apt install xfce4 xfce4-goodies #lightdm
 sudo passwd ubuntu #"Genomics"
-sudo apt install tasksel -y
-sudo tasksel install ubuntustudio-desktop-core # No for jackd
-sudo systemctl set-default graphical.target
-sudo shutdown -r now
 sudo apt install tigervnc-standalone-server -y
-vncpasswd #Genomics ## No view-only
-sudo vncserver -localhost no
-sudo vncserver -kill :1
+vncserver # Genomics, no view-only
+vncserver -kill :1
+nano ~/.vnc/xstartup
+## Add following
+```
+#!/bin/bash
+xrdb $HOME/.Xresources
+startxfce4 &
+```
 
+chmod +x ~/.vnc/xstartup
+vncserver
+sudo nano /etc/systemd/system/vncserver@.service
+## Add following
+```
+[Unit]
+Description=Remote desktop service (VNC)
+After=syslog.target network.target
 
+[Service]
+Type=forking
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu
+
+PIDFile=/home/ubuntu/.vnc/%H:%i.pid
+ExecStartPre=/usr/bin/vncserver -kill :%i > /dev/null 2>&1
+ExecStart=/usr/bin/vncserver :%i
+ExecStop=/usr/bin/vncserver -kill :%i
+
+[Install]
+WantedBy=multi-user.target
+```
+
+sudo systemctl daemon-reload
+sudo systemctl enable vncserver@1.service
+sudo systemctl start vncserver@1.service
+sudo shutdown -r now
 
 ######
 mv ~/.vnc/xstartup ~/.vnc/xstartup.bak
