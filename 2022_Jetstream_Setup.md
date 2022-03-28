@@ -28,7 +28,8 @@ gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize
 # Change home terminal location
 ```
 nano ~/.bashrc
-# Add if [ "$PWD" != "$HOME" ]; then cd ~; fi
+# Add  
+if [ "$PWD" = "/" ]; then cd ~; fi
 ```
 
 # Fix date and time
@@ -55,7 +56,7 @@ Turn on and install dash-to-panel
 
 ```
 sudo -i
-apt install curl -y
+apt update
 apt install libcurl4-openssl-dev -y #needed for bioconductor
 apt install libboost-iostreams-dev -y
 apt install libgsl0-dev -y
@@ -85,7 +86,6 @@ apt install libgdal-dev -y
 apt install libpq-dev -y
 apt install libfftw3-3 libfftw3-dev -y 
 apt install libgconf-2-4 -y
-
 apt install texlive-latex-extra -y
 apt install texlive-fonts-recommended -y
 apt install dkms -y
@@ -98,7 +98,6 @@ apt install gdebi-core -y
 apt install cmake -y
 apt install cython -y
 apt install gedit gir1.2-gtksource-3.0 -y
-apt install emboss -y
 apt install default-jdk -y 
 apt install openjdk-8-jdk -y
 apt install ruby-dev nodejs -y
@@ -120,7 +119,7 @@ sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_
 sudo apt install --no-install-recommends r-base r-base-dev
 ```
 
-### Installing Rstudio and make launcher
+### Installing Rstudio
 ```
 wget https://download1.rstudio.org/desktop/bionic/amd64/rstudio-2022.02.1-461-amd64.deb
 sudo gdebi rstudio-2022.02.1-461-amd64.deb # y
@@ -179,7 +178,7 @@ sudo apt install seaview -y
 sudo apt install  mafft -y
 ```
 
-### Installing BLAST 2.11.0+ from NCBI
+### Installing BLAST 2.13.0+ from NCBI
 
 ```
 cd /usr/local/src
@@ -188,6 +187,7 @@ sudo tar zxvpf ncbi-blast-2.13.0+-x64-linux.tar.gz
 sudo rm ncbi-blast-2.13.0+-x64-linux.tar.gz
 cd /usr/bin
 sudo ln -sf /usr/local/src/ncbi-blast-2.13.0+/bin/* .
+cd
 ```
 
 ### Installing BWA
@@ -198,6 +198,7 @@ sudo git clone https://github.com/lh3/bwa.git
 cd bwa; sudo make
 cd /usr/local/bin
 sudo ln -s /usr/local/src/bwa/bwa .
+cd
 ```
 
 ### Installing Bowtie
@@ -211,6 +212,7 @@ cd /usr/local/bin
 sudo ln -s /usr/local/src/bowtie-1.3.1-linux-x86_64/bowtie .
 sudo ln -s /usr/local/src/bowtie-1.3.1-linux-x86_64/bowtie-build .
 sudo ln -s /usr/local/src/bowtie-1.3.1-linux-x86_64/bowtie-inspect .
+cd
 ```
 
 ### Installing Bowtie2
@@ -224,6 +226,7 @@ cd /usr/local/bin
 sudo ln -s /usr/local/src/bowtie2-2.4.5-linux-x86_64/bowtie2 .
 sudo ln -s /usr/local/src/bowtie2-2.4.5-linux-x86_64/bowtie2-build .
 sudo ln -s /usr/local/src/bowtie2-2.4.5-linux-x86_64/bowtie2-inspect .
+cd
 ```
 
 ### Installing Tophat
@@ -250,6 +253,7 @@ sudo make
 sudo make install
 cd /usr/local/bin
 sudo ln -s /usr/local/src/samtools-1.15/bin/samtools .
+cd
 ```
 
 ### Installing Bedtools2
@@ -263,6 +267,7 @@ cd bedtools2
 sudo make
 cd /usr/local/bin
 sudo ln -s /usr/local/src/bedtools2/bin/* .
+cd
 ```
 
 ### Installing Fastqc
@@ -276,6 +281,7 @@ cd FastQC/
 sudo chmod 0755 fastqc
 cd /usr/local/bin
 sudo cp -s ../src/FastQC/fastqc .
+cd
 ```
 
 ### Installing seqtk
@@ -287,6 +293,7 @@ cd seqtk
 sudo make
 cd /usr/local/bin
 sudo ln -s /usr/local/src/seqtk/seqtk .
+cd
 ```
 
 ### Installing Cufflinks
@@ -299,6 +306,7 @@ sudo rm cufflinks-2.2.1.Linux_x86_64.tar.gz
 cd /usr/local/bin
 sudo ln -s /usr/local/src/cufflinks-2.2.1.Linux_x86_64/cuff* .
 sudo ln -s /usr/local/src/cufflinks-2.2.1.Linux_x86_64/g* .
+cd
 ```
 
 ### Installing FreeBayes
@@ -310,6 +318,7 @@ sudo gunzip freebayes-1.3.6-linux-amd64-static.gz
 sudo chmod +x freebayes-1.3.6-linux-amd64-static
 cd /usr/local/bin
 sudo ln -s /usr/local/src/freebayes-1.3.6-linux-amd64-static freebayes
+cd
 ```
 
 ### Installing GATK 4.1.0.0
@@ -321,6 +330,7 @@ sudo unzip gatk-4.2.5.0.zip
 sudo rm gatk-4.2.5.0.zip
 cd /usr/local/bin
 sudo ln -s /usr/local/src/gatk-4.2.5.0/gatk .
+cd
 ```
 
 ### Installing Atom
@@ -328,12 +338,12 @@ sudo ln -s /usr/local/src/gatk-4.2.5.0/gatk .
 ```
 sudo wget https://atom.io/download/deb
 sudo mv deb atom.deb
-sudo gdebi atom.deb
+sudo gdebi atom.deb #y
 sudo rm atom.deb
 ```
 
 Add atom packages:
-
+Edit > Preferences
 * git-plus
 * markdown-pdf
 * line-ending-converter
@@ -363,6 +373,7 @@ sudo git fetch
 sudo git merge origin/master
 sudo apt update
 sudo apt install locate
+sudo updatedb
 sudo locate gsl_sf_psi.h
 sudo locate libgslcblas.so
 sudo locate libgsl.so
@@ -398,6 +409,7 @@ sudo wget https://data.broadinstitute.org/igv/projects/downloads/2.12/IGV_Linux_
 sudo unzip IGV_Linux_2.12.3_WithJava.zip
 sudo rm IGV_Linux_2.12.3_WithJava.zip
 sudo ln -s /usr/local/src/IGV_Linux_2.12.3/igv.sh /usr/local/bin/igv
+cd
 ```
 
 ### STAR
@@ -410,6 +422,7 @@ sudo wget https://github.com/alexdobin/STAR/archive/2.7.10a.tar.gz
 sudo tar -xzf 2.7.10a.tar.gz
 cd /usr/local/bin
 sudo ln -s /usr/local/src/STAR-2.7.10a/bin/Linux_x86_64_static/STAR .
+cd 
 ```
 
 ### Add class data to image
@@ -418,6 +431,7 @@ sudo ln -s /usr/local/src/STAR-2.7.10a/bin/Linux_x86_64_static/STAR .
 cd
 wget http://malooflab.phytonetworks.org/media/maloof-lab/filer_public/8f/d5/8fd59de6-e311-4d50-8320-acc58402982f/bis180l_class_data_2020tar.gz
 tar -xzvf bis180l_class_data_2020tar.gz
+rm bis180l_class_data_2020tar.gz
 ```
 
 ## Installing MAFFT
