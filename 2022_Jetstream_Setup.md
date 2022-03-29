@@ -15,6 +15,69 @@ Accept software update
 
 ctrl-alt-t
 
+# Change VNC server Settings
+```
+sudo nano /etc/systemd/system/vncserver@.service
+[Unit]
+Description=TigerVNC Server
+BindsTo=sys-devices-virtual-net-docker0.device
+After=syslog.target network.target sys-devices-virtual-net-docker0.device
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=exouser
+PAMName=login
+PIDFile=/home/exouser/.vnc/%H%i.pid
+ExecStartPre=/bin/sh -c 'ip address show dev docker0 | grep -q 172.17.0.1'
+ExecStartPre=/usr/bin/vncserver -kill :%i > /dev/null 2>&1
+ExecStart=/usr/bin/vncserver -fg -SecurityTypes X509Vnc -X509Key /home/exouser/.vnc/vnc-server-private.pem -X509Cert /home/exouser/.vnc/vnc-server.pem -localhost no -rfbauth /home/exouser/.vnc/passwd -MaxCutText 99999999 :%i
+ExecStop=/usr/bin/vncserver -kill :%i
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+
+# Make key
+```
+cd ~/.vnc
+nano make_secure.sh
+# Add following
+myIP=$(curl ifconfig.me)
+openssl req \
+  -x509 \
+  -newkey rsa \
+  -days 365 \
+  -nodes \
+  -config /usr/lib/ssl/openssl.cnf \
+  -keyout vnc-server-private.pem \
+  -out vnc-server.pem \
+  -subj "/CN=${myIP}" \
+  -addext "subjectAltName=IP:${myIP}"
+```
+
+
+# Change config
+```
+chmod u+x make_secure.sh
+```
+
+# Copy vnc-server.pem to local machine
+
+# Refresh server and change password
+
+```
+vncpasswd # Genomics
+sudo systemctl daemon-reload
+vncserver -kill :1
+sudo systemctl enable vncserver@1.service
+sudo systemctl restart vncserver@1
+sudo systemctl status vncserver@1 # to check
+```
+
 # Hide mounts on desktop
 ```
 gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts false
