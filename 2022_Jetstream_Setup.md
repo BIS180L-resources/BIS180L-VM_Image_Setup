@@ -511,3 +511,9 @@ sudo wget http://microbesonline.org/fasttree/FastTree
 sudo chmod +x FastTree
 ```
 
+## Installing [fail2ban](https://github.com/fail2ban/fail2ban)
+This software blocks ssh access after X failed attempts (default 10)
+```
+sudo apt-get install fail2ban
+```
+
