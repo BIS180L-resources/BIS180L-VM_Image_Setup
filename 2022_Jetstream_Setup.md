@@ -463,6 +463,17 @@ make executable
 ```
 sudo chmod 755 fastStructure
 ```
+
+#### NEED TO ADD THIS TO MAKE RUN EVERYTIME. SHOULD TWEAK ABOVE MENTIONS TO THIS
+```
+echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu' >> ~/.bashrc
+echo 'export LDFLAGS="-L/usr/lib/x86_64-linux-gnu"' >> ~/.bashrc
+echo 'export CFLAGS="-I/usr/include"' >> ~/.bashrc
+source ~/.bashrc
+fastStructure
+```
+
+
 ### igv
 go to [igv downloads](http://software.broadinstitute.org/software/igv/download) and download the binary version (currently 2.9.4)
 
