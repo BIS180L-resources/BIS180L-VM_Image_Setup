@@ -79,7 +79,58 @@ sudo systemctl restart vncserver@1
 sudo systemctl status vncserver@1 # to check
 ```
 
+### Install packages and libraries
+```
+sudo -i
+apt update
+apt install libcurl4-openssl-dev -y #needed for bioconductor
+apt install libboost-iostreams-dev -y
+apt install libgsl0-dev -y
+apt install libmysql++-dev -y
+apt install libboost-graph-dev -y
+apt install libgl1-mesa-dev -y #for rgl
+apt install libglu1-mesa-dev -y #for rgl
+apt install libmysqlclient-dev -y #for R mysql
+apt install libfontconfig1-dev -y
+apt install libmpfr-dev -y 
+apt install libgmp-dev -y
+apt install openmpi-bin -y
+apt install libopenmpi-dev -y
+apt install ncbi-blast+ -y # this install 2.9 which a bit old
+apt install ncbi-blast+-legacy -y 
+apt install mysql-client -y
+apt install mysql-server -y
+apt install libssl-dev -y
+apt install libudunits2-dev -y
+apt install libxml2-dev -y
+apt install cargo -y 
+apt install libcairo2-dev -y
+apt install libmagick++-dev -y
+apt install libxslt1-dev -y
+apt install libgeos-dev -y 
+apt install libgdal-dev -y
+apt install libpq-dev -y
+apt install libfftw3-3 libfftw3-dev -y 
+apt install libgconf-2-4 -y
+apt install texlive-latex-extra -y
+apt install texlive-fonts-recommended -y
+apt install dkms -y
+apt install liblist-moreutils-perl -y
+apt install libstatistics-descriptive-perl -y 
+apt install libstatistics-r-perl -y
+apt install perl-doc -y
+apt install libtext-table-perl -y
+apt install gdebi-core -y
+apt install cmake -y
+apt install cython -y
+apt install gedit gir1.2-gtksource-3.0 -y
+apt install default-jdk -y 
+apt install openjdk-8-jdk -y
+apt install ruby-dev nodejs -y
+apt install python3-pip python3-numpy python3-scipy -y
 sudo apt-get install libharfbuzz-dev libfribidi-dev
+exit
+```
 
 ### Installing latest R 4.2.2
 ```
@@ -117,7 +168,7 @@ BiocManager::install(c("Rsubread","BiocStyle","snpStats","rtracklayer","goseq","
 devtools::install_github(repo = "cran/PSMix")
 devtools::install_github(repo = "jiabowang/GAPIT3", force=TRUE)
 # Others that depend on above packages
-install.packages('LDheatmap')
+install.packages("https://cran.r-project.org/src/contrib/Archive/LDheatmap/LDheatmap_1.0-6.tar.gz", repo = NULL, type = "source")
 BiocManager::install("TxDb.Hsapiens.UCSC.hg19.knownGene", lib = "/home/exouser/R/x86_64-pc-linux-gnu-library/4.1")
 BiocManager::install("org.Hs.eg.db", lib = "/home/exouser/R/x86_64-pc-linux-gnu-library/4.1")
 install.packages('SNPassoc')
