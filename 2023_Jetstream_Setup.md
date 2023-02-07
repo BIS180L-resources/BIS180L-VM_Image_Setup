@@ -79,6 +79,8 @@ sudo systemctl restart vncserver@1
 sudo systemctl status vncserver@1 # to check
 ```
 
+sudo apt-get install libharfbuzz-dev libfribidi-dev
+
 ### Installing latest R 4.2.2
 ```
 # update indices
