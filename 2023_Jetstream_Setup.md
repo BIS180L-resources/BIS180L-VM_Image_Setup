@@ -15,70 +15,6 @@ Accept software update
 
 ctrl-alt-t
 
-# Change VNC server Settings
-```
-sudo nano /etc/systemd/system/vncserver@.service
-[Unit]
-Description=TigerVNC Server
-BindsTo=sys-devices-virtual-net-docker0.device
-After=syslog.target network.target sys-devices-virtual-net-docker0.device
-StartLimitIntervalSec=300
-StartLimitBurst=5
-
-[Service]
-Type=simple
-User=exouser
-PAMName=login
-PIDFile=/home/exouser/.vnc/%H%i.pid
-ExecStartPre=/bin/sh -c 'ip address show dev docker0 | grep -q 172.17.0.1'
-ExecStartPre=/usr/bin/vncserver -kill :%i > /dev/null 2>&1
-ExecStart=/usr/bin/vncserver -fg -SecurityTypes X509Vnc -X509Key /home/exouser/.vnc/vnc-server-private.pem -X509Cert /home/exouser/.vnc/vnc-server.pem -localhost no -rfbauth /home/exouser/.vnc/passwd -MaxCutText 99999999 :%i
-ExecStop=/usr/bin/vncserver -kill :%i
-Restart=always
-RestartSec=10
-
-[Install]
-WantedBy=multi-user.target
-```
-
-# Make key
-```
-cd ~/.vnc
-nano make_secure.sh
-# Add following
-myIP=$(curl ifconfig.me)
-openssl req \
-  -x509 \
-  -newkey rsa \
-  -days 365 \
-  -nodes \
-  -config /usr/lib/ssl/openssl.cnf \
-  -keyout vnc-server-private.pem \
-  -out vnc-server.pem \
-  -subj "/CN=${myIP}" \
-  -addext "subjectAltName=IP:${myIP}"
-```
-
-
-# Change config
-```
-chmod u+x make_secure.sh
-./make_secure.sh
-```
-
-# Copy vnc-server.pem to local machine
-
-# Refresh server and change password
-# Do by ssh in
-```
-vncpasswd # Genomics
-sudo systemctl daemon-reload
-vncserver -kill :1
-sudo systemctl enable vncserver@1.service
-sudo systemctl restart vncserver@1
-sudo systemctl status vncserver@1 # to check
-```
-
 ### Install packages and libraries
 ```
 sudo -i
@@ -195,8 +131,8 @@ devtools::install_github(repo = "cran/PSMix")
 devtools::install_github(repo = "jiabowang/GAPIT3", force=TRUE)
 # Others that depend on above packages
 install.packages("https://cran.r-project.org/src/contrib/Archive/LDheatmap/LDheatmap_1.0-6.tar.gz", repo = NULL, type = "source")
-BiocManager::install("TxDb.Hsapiens.UCSC.hg19.knownGene", lib = "/home/exouser/R/x86_64-pc-linux-gnu-library/4.1")
-BiocManager::install("org.Hs.eg.db", lib = "/home/exouser/R/x86_64-pc-linux-gnu-library/4.1")
+BiocManager::install("TxDb.Hsapiens.UCSC.hg19.knownGene", lib = "/home/exouser/R/x86_64-pc-linux-gnu-library/4.2")
+BiocManager::install("org.Hs.eg.db", lib = "/home/exouser/R/x86_64-pc-linux-gnu-library/4.2")
 install.packages('SNPassoc')
 install.packages("EMMREML")
 devtools::install_github("YaoZhou89/BLINK")
@@ -219,17 +155,10 @@ unzip Git-it-Linux-x64.zip
 rm Git-it-Linux-x64.zip
 cd
 # create desktop link to executable
-create file ~/.local/share/applications/Git-it.desktop
+ln -s Git-it-Linux-x64/Git-it .
 ```
 
-### Installing Others
-
-```
-sudo apt install seaview -y
-sudo apt install  mafft -y
-```
-
-### Installing BLAST 2.13.0+ from NCBI
+### Installing BLAST 2.13.0+ from NCBI (version 2.9 installed by default, replace it with code below)
 
 ```
 cd /usr/local/src
@@ -270,13 +199,13 @@ cd
 
 ```
 cd /usr/local/src
-sudo wget https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.4.5/bowtie2-2.4.5-linux-x86_64.zip
-sudo unzip bowtie2-2.4.5-linux-x86_64.zip
-sudo rm bowtie2-2.4.5-linux-x86_64.zip
+sudo wget https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.5.1/bowtie2-2.5.1-linux-x86_64.zip
+sudo unzip bowtie2-2.5.1-linux-x86_64.zip
+sudo rm bowtie2-2.5.1-linux-x86_64.zip
 cd /usr/local/bin
-sudo ln -s /usr/local/src/bowtie2-2.4.5-linux-x86_64/bowtie2 .
-sudo ln -s /usr/local/src/bowtie2-2.4.5-linux-x86_64/bowtie2-build .
-sudo ln -s /usr/local/src/bowtie2-2.4.5-linux-x86_64/bowtie2-inspect .
+sudo ln -s /usr/local/src/bowtie2-2.5.1-linux-x86_64/bowtie2 .
+sudo ln -s /usr/local/src/bowtie2-2.5.1-linux-x86_64/bowtie2-build .
+sudo ln -s /usr/local/src/bowtie2-2.5.1-linux-x86_64/bowtie2-inspect .
 cd
 ```
 
@@ -295,15 +224,15 @@ sudo ln -s /usr/local/src/tophat-2.1.1.Linux_x86_64/tophat .
 
 ```
 cd /usr/local/src
-sudo wget https://github.com/samtools/samtools/releases/download/1.16.1/samtools-1.16.1.tar.bz2
-sudo tar xvfj samtools-1.16.1.tar.bz2
-sudo rm samtools-1.16.1.tar.bz2
-cd samtools-1.16.1
-sudo ./configure --prefix=/usr/local/src/samtools-1.16.1
+sudo wget https://github.com/samtools/samtools/releases/download/1.17/samtools-1.17.tar.bz2
+sudo tar xvfj samtools-1.17.tar.bz2
+sudo rm samtools-1.17.tar.bz2
+cd samtools-1.17
+sudo ./configure --prefix=/usr/local/src/samtools-1.17
 sudo make
 sudo make install
 cd /usr/local/bin
-sudo ln -s /usr/local/src/samtools-1.16.1/bin/samtools .
+sudo ln -s /usr/local/src/samtools-1.17/bin/samtools .
 cd
 ```
 
@@ -325,9 +254,9 @@ cd
 
 ```
 cd /usr/local/src
-sudo wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip
-sudo unzip fastqc_v0.11.9.zip
-sudo rm fastqc_v0.11.9.zip
+sudo wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.12.1.zip
+sudo unzip fastqc_v0.12.1.zip
+sudo rm fastqc_v0.12.1.zip
 cd FastQC/
 sudo chmod 0755 fastqc
 cd /usr/local/bin
@@ -373,15 +302,15 @@ cd
 ```
 
 
-### Installing GATK 4.1.0.0
+### Installing GATK 4.4.0.0
 
 ```
 cd /usr/local/src
-sudo wget https://github.com/broadinstitute/gatk/releases/download/4.2.5.0/gatk-4.2.5.0.zip
-sudo unzip gatk-4.2.5.0.zip
-sudo rm gatk-4.2.5.0.zip
+sudo wget https://github.com/broadinstitute/gatk/releases/download/4.4.0.0/gatk-4.4.0.0.zip
+sudo unzip gatk-4.4.0.0.zip
+sudo rm gatk-4.4.0.0.zip
 cd /usr/local/bin
-sudo ln -s /usr/local/src/gatk-4.2.5.0/gatk .
+sudo ln -s /usr/local/src/gatk-4.4.0.0/gatk .
 cd
 ```
 
@@ -434,7 +363,7 @@ make executable
 sudo chmod 755 fastStructure
 ```
 
-#### NEED TO ADD THIS TO MAKE RUN EVERYTIME. SHOULD TWEAK ABOVE MENTIONS TO THIS
+Add flags to bashrc
 ```
 echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu' >> ~/.bashrc
 echo 'export LDFLAGS="-L/usr/lib/x86_64-linux-gnu"' >> ~/.bashrc
@@ -469,20 +398,11 @@ sudo ln -s /usr/local/src/STAR-2.7.10b/bin/Linux_x86_64_static/STAR .
 cd 
 ```
 
-### Add class data to image
-
-```
-cd
-wget http://malooflab.phytonetworks.org/media/maloof-lab/filer_public/8f/d5/8fd59de6-e311-4d50-8320-acc58402982f/bis180l_class_data_2020tar.gz
-tar -xzvf bis180l_class_data_2020tar.gz
-rm bis180l_class_data_2020tar.gz
-```
-
 ## Installing MAFFT
 ```
-wget https://mafft.cbrc.jp/alignment/software/mafft_7.490-1_amd64.deb
-sudo dpkg -i mafft_7.490-1_amd64.deb
-rm mafft_7.490-1_amd64.deb
+wget https://mafft.cbrc.jp/alignment/software/mafft_7.511-1_amd64.deb
+sudo dpkg -i mafft_7.511-1_amd64.deb
+rm mafft_7.511-1_amd64.deb
 ```
 
 ## Installing FastTree
@@ -496,4 +416,89 @@ sudo chmod +x FastTree
 This software blocks ssh access after X failed attempts (default 10)
 ```
 sudo apt-get install fail2ban
+```
+
+## Install slack
+```
+# download .deb from slack website using firefox on the instance
+# in terminal
+cd Downloads
+sudo gdebi slack-desktop-4.29.149-amd64.deb #y
+```
+
+### Add class data to image (attach volume Class_Data to sdb)
+
+```
+cd /media/volume/sdb
+wget http://malooflab.phytonetworks.org/media/maloof-lab/filer_public/8f/d5/8fd59de6-e311-4d50-8320-acc58402982f/bis180l_class_data_2020tar.gz
+tar -xzvf bis180l_class_data_2020tar.gz
+rm bis180l_class_data_2020tar.gz
+sudo mv data/A.thaliana/ .
+sudo mv data/C.elegans/ .
+sudo mv data/D.melanogaster/ .
+sudo rm -r data
+```
+
+# Change VNC server Settings
+```
+sudo nano /etc/systemd/system/vncserver@.service
+[Unit]
+Description=TigerVNC Server
+BindsTo=sys-devices-virtual-net-docker0.device
+After=syslog.target network.target sys-devices-virtual-net-docker0.device
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=exouser
+PAMName=login
+PIDFile=/home/exouser/.vnc/%H%i.pid
+ExecStartPre=/bin/sh -c 'ip address show dev docker0 | grep -q 172.17.0.1'
+ExecStartPre=/usr/bin/vncserver -kill :%i > /dev/null 2>&1
+ExecStart=/usr/bin/vncserver -fg -SecurityTypes X509Vnc -X509Key /home/exouser/.vnc/vnc-server-private.pem -X509Cert /home/exouser/.vnc/vnc-server.pem -localhost no -rfbauth /home/exouser/.vnc/passwd -MaxCutText 99999999 :%i
+ExecStop=/usr/bin/vncserver -kill :%i
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+
+# Make key
+```
+cd ~/.vnc
+nano make_secure.sh
+# Add following
+myIP=$(curl ifconfig.me)
+openssl req \
+  -x509 \
+  -newkey rsa \
+  -days 365 \
+  -nodes \
+  -config /usr/lib/ssl/openssl.cnf \
+  -keyout vnc-server-private.pem \
+  -out vnc-server.pem \
+  -subj "/CN=${myIP}" \
+  -addext "subjectAltName=IP:${myIP}"
+```
+
+
+# Change config
+```
+chmod u+x make_secure.sh
+./make_secure.sh
+```
+
+# Copy vnc-server.pem to local machine
+
+# Refresh server and change password
+# Do by ssh in
+```
+vncpasswd # Genomics
+sudo systemctl daemon-reload
+vncserver -kill :1
+sudo systemctl enable vncserver@1.service
+sudo systemctl restart vncserver@1
+sudo systemctl status vncserver@1 # to check
 ```
