@@ -3,7 +3,7 @@ Flavor: m3.quad
 
  * 4 CPU cores  
  * 15 GB RAM  
- * 60 GB Root Disk (Custom size, increase from 20 to 60 GB)
+ * 80 GB Root Disk (Custom size, increase from 20 to 80 GB)
 
 Add SSH Key  
 Add Web Desktop
@@ -96,8 +96,6 @@ apt install libmpfr-dev -y
 apt install libgmp-dev -y
 apt install openmpi-bin -y
 apt install libopenmpi-dev -y
-apt install ncbi-blast+ -y # this install 2.9 which a bit old
-apt install ncbi-blast+-legacy -y 
 apt install mysql-client -y
 apt install mysql-server -y
 apt install libssl-dev -y
@@ -128,11 +126,38 @@ apt install default-jdk -y
 apt install openjdk-8-jdk -y
 apt install ruby-dev nodejs -y
 apt install python3-pip python3-numpy python3-scipy -y
-sudo apt-get install libharfbuzz-dev libfribidi-dev
+sudo apt-get install libharfbuzz-dev libfribidi-dev -y
 exit
 ```
 
-### Installing latest R 4.2.2
+# Make minimize and maximize buttons appear
+```
+gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+```
+
+# Fix date and time
+```
+sudo dpkg-reconfigure tzdata
+```
+
+# Change keybinding for nano whereis
+```
+sudo nano /etc/nanorc
+# Add
+bind ^f whereis main
+```
+
+# Make the toolbar more windows like  
+```
+sudo apt-get install chrome-gnome-shell
+```
+
+Add native installer extension from https://extensions.gnome.org/  
+Turn on and install Dash to Panel
+
+# Make BIS180L site homepage
+
+### Installing latest R 4.2.3
 ```
 # update indices
 sudo apt update -qq
@@ -142,6 +167,8 @@ sudo apt install --no-install-recommends software-properties-common dirmngr
 # To verify key, run gpg --show-keys /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc 
 # Fingerprint: E298A3A825C0D65DFD57CBB651716619E084DAB9
 wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+run gpg --show-keys /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+# Fingerprint: E298A3A825C0D65DFD57CBB651716619E084DAB9
 # add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
 sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
 sudo apt install --no-install-recommends r-base # Y
@@ -149,14 +176,13 @@ sudo apt install --no-install-recommends r-base # Y
 
 ### Installing Rstudio
 ```
-sudo apt-get install gdebi-core
-wget https://download1.rstudio.org/electron/bionic/amd64/rstudio-2022.12.0-353-amd64.deb
-sudo gdebi rstudio-2022.12.0-353-amd64.deb # y
-rm rstudio-2022.12.0-353-amd64.deb
-## Edit the exec command of ~/.local/share/applications to just run rstudio and not that module crap
+wget https://download1.rstudio.org/electron/bionic/amd64/rstudio-2023.03.0-386-amd64.deb
+sudo gdebi rstudio-2023.03.0-386-amd64.deb # y
+rm rstudio-2023.03.0-386-amd64.deb
+## Edit the exec command of ~/.local/share/applications/rstudio.desktop to just run rstudio and not that module crap
 ```
 
-### Installing R packages within Rstudio under /home/exouser/R/x86_64-pc-linux-gnu-library/4.1 [Default]
+### Installing R packages within Rstudio under /home/exouser/R/x86_64-pc-linux-gnu-library/4.2 [Default]
 
 ```
 # Cran packages
