@@ -426,7 +426,15 @@ cd Downloads
 sudo gdebi slack-desktop-4.29.149-amd64.deb #y
 ```
 
-### Add class data to image (attach volume Class_Data to sdb)
+### Add class data to image
+
+```
+wget http://malooflab.phytonetworks.org/media/maloof-lab/filer_public/8f/d5/8fd59de6-e311-4d50-8320-acc58402982f/bis180l_class_data_2020tar.gz
+tar -xzvf bis180l_class_data_2020tar.gz
+rm bis180l_class_data_2020tar.gz
+```
+
+### Add class data to volume (attach volume Class_Data to sdb)
 
 ```
 cd /media/volume/sdb
@@ -470,6 +478,7 @@ WantedBy=multi-user.target
 cd ~/.vnc
 nano make_secure.sh
 # Add following
+#!/bin/bash
 myIP=$(curl ifconfig.me)
 openssl req \
   -x509 \
@@ -502,3 +511,18 @@ sudo systemctl enable vncserver@1.service
 sudo systemctl restart vncserver@1
 sudo systemctl status vncserver@1 # to check
 ```
+
+# Create image snapshot
+On Jetstream gui click create snapshot image of instance under actions while server is running
+
+# Create new instances
+Image: BIS180_Base-image
+Flavor: m3.quad  
+
+ * 4 CPU cores  
+ * 15 GB RAM  
+ * 80 GB Root Disk (Custom size, increase from 20 to 80 GB)
+
+**DO NOT Add Web Desktop** (Doing so will wipe out vnc settings)
+
+# Ready for class
