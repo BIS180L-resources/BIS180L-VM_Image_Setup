@@ -19,6 +19,9 @@ ctrl-alt-t
 ```
 sudo -i
 apt update
+
+export NEEDRESTART_MODE=a # prevents interactice restart services screen from popping up
+
 apt install libcurl4-openssl-dev -y #needed for bioconductor
 apt install libboost-iostreams-dev -y
 apt install libgsl0-dev -y
@@ -62,7 +65,7 @@ apt install default-jdk -y
 apt install openjdk-8-jdk -y
 apt install ruby-dev nodejs -y
 apt install python3-pip python3-numpy python3-scipy -y
-sudo apt-get install libharfbuzz-dev libfribidi-dev -y
+apt install libharfbuzz-dev libfribidi-dev -y
 exit
 ```
 
@@ -77,6 +80,8 @@ sudo dpkg-reconfigure tzdata
 ```
 
 # Change keybinding for nano whereis
+
+add line below, OR just scroll to the end of the file and comment/uncomment bindings as desired
 ```
 sudo nano /etc/nanorc
 # Add
@@ -88,12 +93,17 @@ bind ^f whereis main
 sudo apt-get install chrome-gnome-shell
 ```
 
-Add native installer extension from https://extensions.gnome.org/  
-Turn on and install Dash to Panel
+Add native installer extension from https://extensions.gnome.org/  (on that website click on the link in the purple box near the top to add the installer.  This allows gnome extensions to be installed from the web browser)
+
+Turn on and install "Dash to Panel" (search for it with search bar and then click the switch)
 
 # Make BIS180L site homepage
 
-### Installing latest R 4.2.3
+### Installing latest R 
+
+Although the base Ubuntu 22 image has R and RStudio they are out of date.
+
+Go to [https://cran.r-project.org/](cran) to get latest script
 ```
 # update indices
 sudo apt update -qq
@@ -103,8 +113,6 @@ sudo apt install --no-install-recommends software-properties-common dirmngr
 # To verify key, run gpg --show-keys /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc 
 # Fingerprint: E298A3A825C0D65DFD57CBB651716619E084DAB9
 wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
-run gpg --show-keys /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
-# Fingerprint: E298A3A825C0D65DFD57CBB651716619E084DAB9
 # add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
 sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
 sudo apt install --no-install-recommends r-base # Y
