@@ -119,31 +119,48 @@ sudo apt install --no-install-recommends r-base # Y
 ```
 
 ### Installing Rstudio
+
+Check Posit website for latest
 ```
-wget https://download1.rstudio.org/electron/bionic/amd64/rstudio-2023.03.0-386-amd64.deb
-sudo gdebi rstudio-2023.03.0-386-amd64.deb # y
-rm rstudio-2023.03.0-386-amd64.deb
+wget https://download1.rstudio.org/electron/jammy/amd64/rstudio-2023.12.1-402-amd64.deb
+sudo sudo gdebi rstudio-2023.12.1-402-amd64.deb  # y
+rm sudo gdebi rstudio-2023.12.1-402-amd64.deb 
 ## Edit the exec command of ~/.local/share/applications/rstudio.desktop to just run rstudio and not that module crap
 ```
 
-### Installing R packages within Rstudio under /home/exouser/R/x86_64-pc-linux-gnu-library/4.2 [Default]
+### Installing R packages 
+
+Install what we can from the apt system. It is faster because packages do not need to be compiled    
+```
+sudo -i
+
+apt install --no-install-recommends r-cran-swirl r-cran-tidyverse r-cran-seqinr r-cran-qtl r-cran-evaluate  r-cran-highr r-cran-markdown r-cran-yaml r-cran-htmltools  r-cran-bitops r-cran-knitr r-cran-rmarkdown r-cran-devtools r-cran-shiny r-cran-pvclust r-cran-gplots r-cran-cluster r-cran-igraph r-cran-scatterplot3d r-cran-ape r-cran-rsconnect  r-cran-poisbinom r-cran-biocmanager  r-cran-igraph r-cran-ggdendro r-cran-upsetr r-cran-statgengwas
+```
 
 ```
+sudo -i
+
+R 
+
+# within R: #installs into /usr/local/lib/R/site-library since we are sudo
 # Cran packages
-install.packages(c('swirl','ggplot2','genetics','hwde','seqinr','qtl','evaluate','formatR','highr','markdown','yaml','htmltools','caTools','bitops','knitr','rmarkdown','devtools','shiny','pvclust','gplots','cluster','igraph','scatterplot3d','ape','rsconnect','dplyr','tidyverse','learnr','poisbinom'), dependencies=T)
+install.packages(c('hwde', 'caTools', 'formatR'), dependencies=T)
+
 # Install Biocondutor packages    
-install.packages("BiocManager")
-BiocManager::install(c("Rsubread","BiocStyle","snpStats","rtracklayer","goseq","impute","multtest","VariantAnnotation","chopsticks","edgeR"))
+BiocManager::install(c("BiocStyle","snpStats","rtracklayer","goseq","impute","multtest","VariantAnnotation","chopsticks","edgeR", "GenomicRanges"))
+
 # Github packages
 devtools::install_github(repo = "cran/PSMix")
-devtools::install_github(repo = "jiabowang/GAPIT3", force=TRUE)
-# Others that depend on above packages
-install.packages("https://cran.r-project.org/src/contrib/Archive/LDheatmap/LDheatmap_1.0-6.tar.gz", repo = NULL, type = "source")
-BiocManager::install("TxDb.Hsapiens.UCSC.hg19.knownGene", lib = "/home/exouser/R/x86_64-pc-linux-gnu-library/4.2")
-BiocManager::install("org.Hs.eg.db", lib = "/home/exouser/R/x86_64-pc-linux-gnu-library/4.2")
-install.packages('SNPassoc')
-install.packages("EMMREML")
-devtools::install_github("YaoZhou89/BLINK")
+
+# below not needed?
+# devtools::install_github(repo = "jiabowang/GAPIT3", force=TRUE)
+# install.packages('SNPassoc')
+# install.packages("EMMREML")
+# devtools::install_github("YaoZhou89/BLINK")
+# install.packages("https://cran.r-project.org/src/contrib/Archive/LDheatmap/LDheatmap_1.0-6.tar.gz", repo = NULL, type = "source")
+
+# BiocManager::install("TxDb.Hsapiens.UCSC.hg19.knownGene", lib = "/home/exouser/R/x86_64-pc-linux-gnu-library/4.2")
+# BiocManager::install("org.Hs.eg.db", lib = "/home/exouser/R/x86_64-pc-linux-gnu-library/4.2")
 ```
 
 ### Install BFG
@@ -154,71 +171,48 @@ sudo bash -c 'echo "java -jar /usr/local/src/bfg.jar \$*" > /usr/local/bin/bfg'
 sudo chmod +x /usr/local/bin/bfg
 ```
 
-### Install git-it desktop
+### Install github desktop
+
+See https://github.com/shiftkey/desktop
 
 ```
-cd /home/exouser/Desktop
-wget https://github.com/jlord/git-it-electron/releases/download/4.4.0/Git-it-Linux-x64.zip
-unzip Git-it-Linux-x64.zip
-rm Git-it-Linux-x64.zip
-cd
-# create desktop link to executable
-ln -s Git-it-Linux-x64/Git-it .
+wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null
+  141  sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" > /etc/apt/sources.list.d/shiftkey-packages.list'
+  142  sudo apt update && sudo apt install github-desktop
 ```
 
-### Installing BLAST 2.13.0+ from NCBI (version 2.9 installed by default, replace it with code below)
+### Installing BLAST 2.15.0+ from NCBI (version 2.12 installed by default, replace it with code below)
 
 ```
 cd /usr/local/src
-sudo wget https://ftp.ncbi.nlm.nih.gov/blast/executables/LATEST/ncbi-blast-2.13.0+-x64-linux.tar.gz
-sudo tar zxvpf ncbi-blast-2.13.0+-x64-linux.tar.gz
-sudo rm ncbi-blast-2.13.0+-x64-linux.tar.gz
-cd /usr/bin
-sudo ln -sf /usr/local/src/ncbi-blast-2.13.0+/bin/* .
+sudo wget https://ftp.ncbi.nlm.nih.gov/blast/executables/LATEST/ncbi-blast-2.15.0+-x64-linux.tar.gz
+sudo tar zxvpf ncbi-blast-2.15.0+-x64-linux.tar.gz
+sudo rm ncbi-blast-2.15.0+-x64-linux.tar.gz
+cd /usr/local/bin
+sudo ln -sf /usr/local/src/ncbi-blast-2.15.0+/bin/* .
 cd
 ```
 
 ### Installing BWA
-
+__Probably not needed, use HISAT2 instead__
 ```
-cd /usr/local/src
-sudo git clone https://github.com/lh3/bwa.git
-cd bwa; sudo make
-cd /usr/local/bin
-sudo ln -s /usr/local/src/bwa/bwa .
-cd
-```
-
-### Installing Bowtie
-
-```
-cd /usr/local/src
-sudo wget https://sourceforge.net/projects/bowtie-bio/files/bowtie/1.3.1/bowtie-1.3.1-linux-x86_64.zip/download
-sudo unzip download
-sudo rm download
-cd /usr/local/bin
-sudo ln -s /usr/local/src/bowtie-1.3.1-linux-x86_64/bowtie .
-sudo ln -s /usr/local/src/bowtie-1.3.1-linux-x86_64/bowtie-build .
-sudo ln -s /usr/local/src/bowtie-1.3.1-linux-x86_64/bowtie-inspect .
-cd
+sudo apt install bwa
 ```
 
 ### Installing Bowtie2
+__Probably not needed, use HISAT2 instead__
+```
+sudo apt install bowtie2
+```
+
+### installing Hisat2
 
 ```
-cd /usr/local/src
-sudo wget https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.5.1/bowtie2-2.5.1-linux-x86_64.zip
-sudo unzip bowtie2-2.5.1-linux-x86_64.zip
-sudo rm bowtie2-2.5.1-linux-x86_64.zip
-cd /usr/local/bin
-sudo ln -s /usr/local/src/bowtie2-2.5.1-linux-x86_64/bowtie2 .
-sudo ln -s /usr/local/src/bowtie2-2.5.1-linux-x86_64/bowtie2-build .
-sudo ln -s /usr/local/src/bowtie2-2.5.1-linux-x86_64/bowtie2-inspect .
-cd
+apt install hisat2 python3-hisat2
 ```
 
 ### Installing Tophat
-
+__Probably not needed, use HISAT2 instead__
 ```
 cd /usr/local/src
 sudo wget http://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.1.Linux_x86_64.tar.gz
@@ -228,34 +222,41 @@ cd /usr/local/bin
 sudo ln -s /usr/local/src/tophat-2.1.1.Linux_x86_64/tophat .
 ```
 
-### Installing Samtools
-
+### Installing Samtools, bctools, htslib
+(apt versions are way behind)
 ```
 cd /usr/local/src
-sudo wget https://github.com/samtools/samtools/releases/download/1.17/samtools-1.17.tar.bz2
-sudo tar xvfj samtools-1.17.tar.bz2
-sudo rm samtools-1.17.tar.bz2
-cd samtools-1.17
-sudo ./configure --prefix=/usr/local/src/samtools-1.17
+sudo wget https://github.com/samtools/samtools/releases/download/1.19.2/samtools-1.19.2.tar.bz2
+sudo tar xvfj samtools-1.19.2.tar.bz2
+sudo rm samtools-1.19.2.tar.bz2
+cd samtools-1.19.2
+sudo ./configure --prefix=/usr/local/bin
 sudo make
 sudo make install
-cd /usr/local/bin
-sudo ln -s /usr/local/src/samtools-1.17/bin/samtools .
-cd
+
+cd /usr/local/src
+sudo wget https://github.com/samtools/bcftools/releases/download/1.19/bcftools-1.19.tar.bz2
+sudo tar xvfj bcftools-1.19.tar.bz2
+sudo rm bcftools-1.19.tar.bz2
+cd bcftools-1.19
+sudo ./configure --prefix=/usr/local/bin
+sudo make
+sudo make install
+
+cd /usr/local/src
+sudo wget https://github.com/samtools/htslib/releases/download/1.19.1/htslib-1.19.1.tar.bz2
+sudo tar xvfj htslib-1.19.1.tar.bz2
+sudo rm htslib-1.19.1.tar.bz2
+cd htslib-1.19.1
+sudo ./configure --prefix=/usr/local/bin
+sudo make
+sudo make install
 ```
 
 ### Installing Bedtools2
 
 ```
-cd /usr/local/src
-sudo wget https://github.com/arq5x/bedtools2/releases/download/v2.30.0/bedtools-2.30.0.tar.gz
-sudo tar -zxvf bedtools-2.30.0.tar.gz
-sudo rm bedtools-2.30.0.tar.gz
-cd bedtools2
-sudo make
-cd /usr/local/bin
-sudo ln -s /usr/local/src/bedtools2/bin/* .
-cd
+sudo apt install bedtools
 ```
 
 ### Installing Fastqc
@@ -273,7 +274,7 @@ cd
 ```
 
 ### Installing seqtk
-
+__NOT NEEDED__
 ```
 cd /usr/local/src
 sudo git clone https://github.com/lh3/seqtk.git
@@ -285,7 +286,7 @@ cd
 ```
 
 ### Installing Cufflinks
-
+__NOT NEEDED__
 ```
 cd /usr/local/src
 sudo wget http://cole-trapnell-lab.github.io/cufflinks/assets/downloads/cufflinks-2.2.1.Linux_x86_64.tar.gz
@@ -300,32 +301,27 @@ cd
 ### Installing FreeBayes
 
 ```
-cd /usr/local/src
-sudo wget https://github.com/freebayes/freebayes/releases/download/v1.3.6/freebayes-1.3.6-linux-amd64-static.gz
-sudo gunzip freebayes-1.3.6-linux-amd64-static.gz
-sudo chmod +x freebayes-1.3.6-linux-amd64-static
-cd /usr/local/bin
-sudo ln -s /usr/local/src/freebayes-1.3.6-linux-amd64-static freebayes
-cd
+sudo apt install freebayes
 ```
 
 
-### Installing GATK 4.4.0.0
+### Installing GATK 4.5.0.0
 
 ```
 cd /usr/local/src
-sudo wget https://github.com/broadinstitute/gatk/releases/download/4.4.0.0/gatk-4.4.0.0.zip
-sudo unzip gatk-4.4.0.0.zip
-sudo rm gatk-4.4.0.0.zip
+sudo wget https://github.com/broadinstitute/gatk/releases/download/4.5.0.0/gatk-4.5.0.0.zip
+sudo unzip gatk-4.5.0.0.zip
+sudo rm gatk-4.5.0.0.zip
 cd /usr/local/bin
-sudo ln -s /usr/local/src/gatk-4.4.0.0/gatk .
+sudo ln -s /usr/local/src/gatk-4.5.0.0/gatk .
 cd
 ```
 
 ### fastStructure
-
+__ Can't install due to python2 dependency.  Alternatives are ADMIXTURE or SambaR; see below__
 ```
 cd /usr/local/src/
+sudo apt install pythton2
 sudo curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
 sudo python2 get-pip.py
 sudo pip2 install --no-deps --ignore-installed --force-reinstall cython==0.27.3 numpy==1.16.5 scipy==1.2.1
@@ -380,6 +376,45 @@ source ~/.bashrc
 fastStructure
 ```
 
+### ADMIXTURE
+https://dalexander.github.io/admixture/download.html
+```
+cd /usr/local/src
+sudo wget https://dalexander.github.io/admixture/binaries/admixture_linux-1.3.0.tar.gz
+sudo tar -xvzf admixture_linux-1.3.0.tar.gz
+cd ../bin
+ln -s /usr/local/src/dist/admixture_linux-1.3.0/admixture .
+cd
+```
+
+### SambaR
+https://github.com/mennodejong1986/SambaR
+
+Not really an R package, but wrappers that can help with the admixture analysis in R
+
+```
+cd /usr/local/src
+sudo git clone https://github.com/mennodejong1986/SambaR.git
+cd SambaR
+sudo R
+
+# in R
+source("SAMBAR_v1xx.txt")
+getpackages()
+```
+
+### htseq
+
+### hifiasm
+
+### whatever the hifi methylation package is
+
+### busco
+
+### whatever the seqstats package is
+
+### fastp
+ 
 
 ### igv
 go to [igv downloads](http://software.broadinstitute.org/software/igv/download) and download the binary version (currently 2.16)
