@@ -71,7 +71,7 @@ apt install bowtie2 -y # probably not needed use hisat
 apt install hisat2 python3-hisat2 -y 
 apt install bedtools -y
 apt install freebayes -y
-apt install busco -y
+# apt install busco -y # Broken.  Use bioconda, see below
 apt install mafft -y
 apt install probalign -y
 apt install t-coffee -y
@@ -382,10 +382,14 @@ WARNING:
 
 ### [PacBio MiniMap2](https://github.com/PacificBiosciences/pbmm2)
 [Install Instructions](https://github.com/PacificBiosciences/pbbioconda)
+
+Also [seqkit](https://github.com/shenwei356/seqkit) and [busco]()
 ```
 conda create --name pb-minimap2
 conda activate pb-minimap2
 conda install -c bioconda pbmm2
+conda install -c bioconda seqkit
+conda install -c conda-forge -c bioconda busco
 conda deactivate
 ```
 
