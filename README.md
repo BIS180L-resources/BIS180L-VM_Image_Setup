@@ -1,3 +1,7 @@
+# AWS is out of date.  Now we use Jetstream2
+
+You will need an [Access-CI account](https://access-ci.org/)
+
 # Getting Started with AWS
 ## Creating an AWS account
 
