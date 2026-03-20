@@ -120,6 +120,8 @@ Turn on and install "Dash to Panel" (search for it with search bar and then clic
 Although the base Ubuntu 24 image has R and RStudio they are out of date.
 
 Go to [https://cran.r-project.org/](cran) to get latest script
+
+(Alternatively can skip this and use the r2u script detailed below)
 ```
 # update indices
 sudo apt update -qq
@@ -139,37 +141,76 @@ sudo apt install --no-install-recommends r-base
 
 Check Posit website for latest
 ```
-wget https://download1.rstudio.org/electron/jammy/amd64/rstudio-2023.12.1-402-amd64.deb
-sudo gdebi rstudio-2023.12.1-402-amd64.deb  # y
-rm rstudio-2023.12.1-402-amd64.deb 
+wget https://download1.rstudio.org/electron/jammy/amd64/rstudio-2026.01.1-403-amd64.deb
+sudo gdebi rstudio-2026.01.1-403-amd64.deb  # y
+rm rstudio-2026.01.1-403-amd64.deb
 ## Edit the exec command of ~/.local/share/applications/rstudio.desktop to just run rstudio and not that module crap
 ```
 
 ### Installing R packages 
 
-Install what we can from the apt system. It is faster because packages do not need to be compiled    
+Add the [r2u](https://github.com/eddelbuettel/r2u/blob/master/inst/scripts/add_cranapt_noble.sh) repo. This enables us to use apt to insall all CRAN and bioconductor packages using apt.  It also sets up R to use the r2u system for `install.packages()`
+
+Cut and Paste the commands in the [install script](https://github.com/eddelbuettel/r2u/blob/master/inst/scripts/add_cranapt_noble.sh)
+
+Then
 ```
-
-# add another repository
-
-sudo add-apt-repository ppa:c2d4u.team/c2d4u4.0+
-
 sudo apt update
 
-sudo apt install --no-install-recommends r-cran-swirl r-cran-tidyverse r-cran-seqinr r-cran-qtl r-cran-evaluate  r-cran-highr r-cran-markdown r-cran-yaml r-cran-htmltools  r-cran-bitops r-cran-knitr r-cran-rmarkdown r-cran-devtools r-cran-shiny r-cran-pvclust r-cran-gplots r-cran-cluster r-cran-igraph r-cran-scatterplot3d r-cran-ape r-cran-rsconnect  r-cran-poisbinom r-cran-biocmanager  r-cran-igraph r-cran-ggdendro r-cran-upsetr r-cran-statgengwas
+sudo apt install \
+  r-cran-swirl \
+  r-cran-tidyverse \
+  r-cran-seqinr \
+  r-cran-qtl \
+  r-cran-evaluate \
+  r-cran-highr \
+  r-cran-markdown \
+  r-cran-yaml \
+  r-cran-htmltools \
+  r-cran-bitops \
+  r-cran-knitr \
+  r-cran-rmarkdown \
+  r-cran-devtools \
+  r-cran-shiny \
+  r-cran-pvclust \
+  r-cran-gplots \
+  r-cran-cluster \
+  r-cran-igraph \
+  r-cran-scatterplot3d \
+  r-cran-ape \
+  r-cran-rsconnect \
+  r-cran-poisbinom \
+  r-cran-biocmanager \
+  r-cran-ggdendro \
+  r-cran-upsetr \
+  r-cran-statgengwas \
+  r-cran-hwde \
+  r-cran-formatr
+```
+
+Bioconductor installs
+
+```
+sudo apt install --no-install-recommends \
+  r-bioc-biocstyle \
+  r-bioc-snpstats \
+  r-bioc-rtracklayer \
+  r-bioc-goseq \
+  r-bioc-impute \
+  r-bioc-multtest \
+  r-bioc-variantannotation \
+  r-bioc-edger \
+  r-bioc-genomicranges
+
 ```
 
 ```
-sudo -i
-
-R 
+sudo R 
 
 # within R: #installs into /usr/local/lib/R/site-library since we are sudo
-# Cran packages
-install.packages(c('hwde', 'caTools', 'formatR'), dependencies=T)
 
 # Install Biocondutor packages    
-BiocManager::install(c("BiocStyle","snpStats","rtracklayer","goseq","impute","multtest","VariantAnnotation","chopsticks","edgeR", "GenomicRanges"))
+BiocManager::install("chopsticks") # not in r2u as of 2026
 
 # Github packages
 devtools::install_github(repo = "cran/PSMix")
@@ -183,12 +224,14 @@ devtools::install_github(repo = "cran/PSMix")
 
 # BiocManager::install("TxDb.Hsapiens.UCSC.hg19.knownGene", lib = "/home/exouser/R/x86_64-pc-linux-gnu-library/4.2")
 # BiocManager::install("org.Hs.eg.db", lib = "/home/exouser/R/x86_64-pc-linux-gnu-library/4.2")
+
+q()
 ```
 
 ### Install BFG
 
 ```
-sudo wget -O /usr/local/src/bfg.jar https://repo1.maven.org/maven2/com/madgag/bfg/1.14.0/bfg-1.14.0.jar
+sudo wget -O /usr/local/src/bfg.jar https://repo1.maven.org/maven2/com/madgag/bfg/1.15.0/bfg-1.15.0.jar
 sudo bash -c 'echo "java -jar /usr/local/src/bfg.jar \$*" > /usr/local/bin/bfg'
 sudo chmod +x /usr/local/bin/bfg
 ```
