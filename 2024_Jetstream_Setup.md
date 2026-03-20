@@ -193,60 +193,49 @@ sudo chmod +x /usr/local/bin/bfg
 See https://github.com/shiftkey/desktop
 
 ```
-wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null
-sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" > /etc/apt/sources.list.d/shiftkey-packages.list'
+wget -qO - https://mirror.mwt.me/shiftkey-desktop/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/mwt-desktop.gpg > /dev/null
+sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/mwt-desktop.gpg] https://mirror.mwt.me/shiftkey-desktop/deb/ any main" > /etc/apt/sources.list.d/mwt-desktop.list'
 sudo apt update && sudo apt install github-desktop
 ```
 
-### Installing BLAST 2.15.0+ from NCBI (version 2.12 installed by default, replace it with code below)
+### Installing BLAST 2.17.0+ from NCBI (version 2.12 installed by default, replace it with code below)
 
 ```
 cd /usr/local/src
-sudo wget https://ftp.ncbi.nlm.nih.gov/blast/executables/LATEST/ncbi-blast-2.15.0+-x64-linux.tar.gz
-sudo tar zxvpf ncbi-blast-2.15.0+-x64-linux.tar.gz
-sudo rm ncbi-blast-2.15.0+-x64-linux.tar.gz
+sudo wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.17.0+-x64-linux.tar.gz
+sudo tar zxvpf ncbi-blast-2.17.0+-x64-linux.tar.gz
+sudo rm ncbi-blast-2.17.0+-x64-linux.tar.gz
 cd /usr/local/bin
-sudo ln -sf /usr/local/src/ncbi-blast-2.15.0+/bin/* .
+sudo ln -sf /usr/local/src/ncbi-blast-2.17.0+/bin/* .
 cd
-```
-
-### Installing Tophat
-__Probably not needed, use HISAT2 instead__
-```
-cd /usr/local/src
-sudo wget http://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.1.Linux_x86_64.tar.gz
-sudo tar xvfz tophat-2.1.1.Linux_x86_64.tar.gz
-sudo rm tophat-2.1.1.Linux_x86_64.tar.gz
-cd /usr/local/bin
-sudo ln -s /usr/local/src/tophat-2.1.1.Linux_x86_64/tophat .
 ```
 
 ### Installing Samtools, bctools, htslib
 (apt versions are way behind)
 ```
 cd /usr/local/src
-sudo wget https://github.com/samtools/samtools/releases/download/1.19.2/samtools-1.19.2.tar.bz2
-sudo tar xvfj samtools-1.19.2.tar.bz2
-sudo rm samtools-1.19.2.tar.bz2
-cd samtools-1.19.2
+sudo wget https://github.com/samtools/samtools/releases/download/1.23.1/samtools-1.23.1.tar.bz2
+sudo tar xvfj samtools-1.23.1.tar.bz2
+sudo rm samtools-1.23.1.tar.bz2
+cd samtools-1.23.1
 sudo ./configure --prefix=/usr/local/bin
 sudo make
 sudo make install
 
 cd /usr/local/src
-sudo wget https://github.com/samtools/bcftools/releases/download/1.19/bcftools-1.19.tar.bz2
-sudo tar xvfj bcftools-1.19.tar.bz2
-sudo rm bcftools-1.19.tar.bz2
-cd bcftools-1.19
+sudo wget https://github.com/samtools/bcftools/releases/download/1.23.1/bcftools-1.23.1.tar.bz2
+sudo tar xvfj bcftools-1.23.1.tar.bz2
+sudo rm bcftools-1.23.1.tar.bz2
+cd bcftools-1.23.1
 sudo ./configure --prefix=/usr/local/bin
 sudo make
 sudo make install
 
 cd /usr/local/src
-sudo wget https://github.com/samtools/htslib/releases/download/1.19.1/htslib-1.19.1.tar.bz2
-sudo tar xvfj htslib-1.19.1.tar.bz2
-sudo rm htslib-1.19.1.tar.bz2
-cd htslib-1.19.1
+sudo wget https://github.com/samtools/htslib/releases/download/1.23.1/htslib-1.23.1.tar.bz2
+sudo tar xvfj htslib-1.23.1.tar.bz2
+sudo rm htslib-1.23.1.tar.bz2
+cd htslib-1.23.1
 sudo ./configure --prefix=/usr/local/bin
 sudo make
 sudo make install
