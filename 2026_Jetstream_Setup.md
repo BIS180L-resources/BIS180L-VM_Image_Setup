@@ -115,9 +115,9 @@ Turn on and install "Dash to Panel" (search for it with search bar and then clic
 
 # Make BIS180L site homepage
 
-### Installing latest R 
+# Installing latest R 
 
-Although the base Ubuntu 22 image has R and RStudio they are out of date.
+Although the base Ubuntu 24 image has R and RStudio they are out of date.
 
 Go to [https://cran.r-project.org/](cran) to get latest script
 ```
@@ -129,9 +129,10 @@ sudo apt install --no-install-recommends software-properties-common dirmngr
 # To verify key, run gpg --show-keys /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc 
 # Fingerprint: E298A3A825C0D65DFD57CBB651716619E084DAB9
 wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
-# add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
+# add the repo from CRAN -- lsb_release adjusts to 'noble' or 'jammy' or ... as needed
 sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
-sudo apt install --no-install-recommends r-base # Y
+# install R itself
+sudo apt install --no-install-recommends r-base
 ```
 
 ### Installing Rstudio
