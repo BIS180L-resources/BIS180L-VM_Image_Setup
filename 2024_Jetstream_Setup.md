@@ -22,6 +22,7 @@ apt update
 
 export NEEDRESTART_MODE=a # prevents interactice restart services screen from popping up
 
+apt install python-is-python3 -y
 apt install libcurl4-openssl-dev -y #needed for bioconductor
 apt install libboost-iostreams-dev -y
 apt install libgsl0-dev -y
@@ -280,15 +281,15 @@ __NOT NEEDED__
 # cd
 ```
 
-### Installing GATK 4.5.0.0
+### Installing GATK 4.6.2.0
 
 ```
 cd /usr/local/src
-sudo wget https://github.com/broadinstitute/gatk/releases/download/4.5.0.0/gatk-4.5.0.0.zip
-sudo unzip gatk-4.5.0.0.zip
-sudo rm gatk-4.5.0.0.zip
+sudo wget https://github.com/broadinstitute/gatk/releases/download/4.6.2.0/gatk-4.6.2.0.zip
+sudo unzip gatk-4.6.2.0.zip
+sudo rm gatk-4.6.2.0.zip
 cd /usr/local/bin
-sudo ln -s /usr/local/src/gatk-4.5.0.0/gatk .
+sudo ln -s /usr/local/src/gatk-4.6.2.0/gatk .
 cd
 ```
 
@@ -300,40 +301,42 @@ __ Can't install due to python2 dependency.  Alternatives are ADMIXTURE or Samba
 https://dalexander.github.io/admixture/download.html
 ```
 cd /usr/local/src
-sudo wget https://dalexander.github.io/admixture/binaries/admixture_linux-1.3.0.tar.gz
-sudo tar -xvzf admixture_linux-1.3.0.tar.gz
+sudo wget https://dalexander.github.io/admixture/binaries/admixture_linux-1.3.1.tar.gz
+sudo tar -xvzf admixture_linux-1.3.1.tar.gz
 cd ../bin
-sudo ln -s /usr/local/src/dist/admixture_linux-1.3.0/admixture .
+ln -s /usr/local/src/admixture_linux-1.3.1/admixture ./
 cd
 ```
 
 ### SambaR
 https://github.com/mennodejong1986/SambaR
 
+Not using
+
 Not really an R package, but wrappers that can help with the admixture analysis in R
 
 ```
-cd /usr/local/src
-sudo git clone https://github.com/mennodejong1986/SambaR.git
-cd SambaR
-sudo R
+# cd /usr/local/src
+# sudo git clone https://github.com/mennodejong1986/SambaR.git
+# cd SambaR
+# sudo R
 
 # in R
-source("SAMBAR_v1.10.txt")
-getpackages()
+# source("SAMBAR_v1.10.txt")
+# getpackages()
 ```
 
 ### htseq
 
 ```
-pip install HTseq
+sudo apt install python3-htseq
 ```
 
 
 
 ### [hifiasm](https://github.com/chhylp123/hifiasm)
 ```
-sudo -i
+sudo -s
 
 cd /usr/local/src
 git clone https://github.com/chhylp123/hifiasm
@@ -356,17 +359,10 @@ bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 rm -rf ~/miniconda3/miniconda.sh
 
 ~/miniconda3/bin/conda init bash
+
 source .bashrc
 
 ```
-
-Got warning: do I need to deal with this?
-WARNING:
-    You currently have a PYTHONPATH environment variable set. This may cause
-    unexpected behavior when running the Python interpreter in Miniconda3.
-    For best results, please verify that your PYTHONPATH only points to
-    directories of packages that are compatible with the Python interpreter
-    in Miniconda3: /home/exouser/miniconda3
 
 
 ### [PacBio MiniMap2](https://github.com/PacificBiosciences/pbmm2)
@@ -385,17 +381,15 @@ conda deactivate
 ### [PacBio CpG Tools](https://github.com/PacificBiosciences/pb-CpG-tools)
 
 ```
-sudo -i
 
 cd /usr/local/src
 
-wget https://github.com/PacificBiosciences/pb-CpG-tools/releases/download/v2.3.2/pb-CpG-tools-v2.3.2-x86_64-unknown-linux-gnu.tar.gz
+sudo wget https://github.com/PacificBiosciences/pb-CpG-tools/releases/download/v3.0.0/pb-CpG-tools-v3.0.0-x86_64-unknown-linux-gnu.tar.gz
 
-tar -xzf pb-CpG-tools-v2.3.2-x86_64-unknown-linux-gnu.tar.gz
+sudo tar -xzf pb-CpG-tools-v3.0.0-x86_64-unknown-linux-gnu.tar.gz
 
 cd /usr/local/bin/
-ln -s /usr/local/src/pb-CpG-tools-v2.3.2-x86_64-unknown-linux-gnu/bin/aligned_bam_to_cpg_scores ./
-exit
+sudo ln -s /usr/local/src/pb-CpG-tools-v3.0.0-x86_64-unknown-linux-gnu/bin/aligned_bam_to_cpg_scores ./
 ```
 
 ### [bbmap](https://jgi.doe.gov/data-and-tools/software-tools/bbtools/bb-tools-user-guide/installation-guide/)
@@ -409,22 +403,20 @@ sudo ln -s /usr/share/bbmap/stats.sh /usr/local/bin/
 ### [fastp](https://github.com/OpenGene/fastp?tab=readme-ov-file)
 Alternative to trimmomatic
 ```
-sudo -i
 
 cd /usr/local/bin
-wget http://opengene.org/fastp/fastp
-chmod a+x ./fastp
+sudo wget http://opengene.org/fastp/fastp
+sudo chmod a+x ./fastp
 ```
 
 ### igv
-go to [igv downloads](http://software.broadinstitute.org/software/igv/download) and download the binary version (currently 2.16)
 
 ```
 cd /usr/local/src
-sudo wget https://data.broadinstitute.org/igv/projects/downloads/2.17/IGV_Linux_2.17.4_WithJava.zip
-sudo unzip IGV_Linux_2.17.4_WithJava.zip
-sudo rm IGV_Linux_2.17.4_WithJava.zip
-sudo ln -s /usr/local/src/IGV_Linux_2.17.4/igv.sh /usr/local/bin/igv
+sudo wget https://data.broadinstitute.org/igv/projects/downloads/2.19/IGV_Linux_2.19.7_WithJava.zip
+sudo unzip IGV_Linux_2.19.7_WithJava.zip
+sudo rm IGV_Linux_2.19.7_WithJava.zip
+sudo ln -s /usr/local/src/IGV_Linux_2.19.7/igv.sh /usr/local/bin/igv
 cd
 ```
 
@@ -453,6 +445,10 @@ Do not restore workspace with .Rdata
 Never save workspace to .Rdata
 Softwrap R source files
 
+## Visual Studio Code
+Download from .deb from website and install using gdebi
+
+
 ## Install slack
 ```
 # download .deb from slack website using firefox on the instance
@@ -470,7 +466,15 @@ tar -xzvf bis180l_class_data_2020tar.gz
 rm bis180l_class_data_2020tar.gz
 ```
 
+## other
+
+* set display resolution
+* set terminal font and colors
+* pin apps to dash
+  
+
 ## Change VNC server Settings
+### not needed if we are using Guacamole
 ```
 sudo vi /etc/systemd/system/vncserver@.service
 
@@ -481,7 +485,8 @@ ExecStart=/usr/bin/vncserver -fg -SecurityTypes TLSVnc -localhost no -rfbauth /h
 ```
 
 ### Refresh server and change password
-# Do by ssh, not web desktop
+### not needed if we are using Guacamole
+Do by ssh, not web desktop
 ```
 vncpasswd # Genomics
 sudo systemctl daemon-reload
@@ -506,6 +511,7 @@ Flavor: m3.quad
  * 15 GB RAM  
  * 80 GB Root Disk (Custom size, increase from 20 to 80 GB)
 
-**DO NOT Add Web Desktop** (Doing so will wipe out vnc settings)
+
+**If using VNC (which we probably are not) DO NOT Add Web Desktop** (Doing so will wipe out vnc settings)
 
 # Ready for class
