@@ -649,7 +649,7 @@ Flavor: m3.quad
 
  * 4 CPU cores  
  * 15 GB RAM  
- * 80 GB Root Disk (Custom size, increase from 20 to 80 GB)
+ * 1000 GB Root Disk (Custom size, increase from 20 to 1000 GB)
 
 # Ready for class
 
