@@ -185,7 +185,10 @@ sudo apt install \
   r-cran-upsetr \
   r-cran-statgengwas \
   r-cran-hwde \
-  r-cran-formatr
+  r-cran-formatr \
+  r-cran-remotes \
+  r-cran-languageserver \ # for connecting to VS Code
+  r-cran-httpgd # For dispalying R graphics in VS Code
 ```
 
 Bioconductor installs
@@ -520,7 +523,44 @@ cd Downloads
 sudo gdebi slack-desktop-4.29.149-amd64.deb #y
 ```
 
-### Add class data to image
+## Visual Studio code
+```
+# Download .deb from website
+cd Downloads/
+sudo gdebi code_1.112.0-1773778351_amd64.deb 
+rm code_1.112.0-1773778351_amd64.deb 
+```
+
+### Add Visual Studio Code extensions
+See [R in VS Code](https://code.visualstudio.com/docs/languages/r) for advice about R extensions.  Also [Linux-specific advice[(https://github.com/REditorSupport/vscode-R/wiki/Installation:-Linux)
+
+* Github copilot chat
+* Markdown all in one
+* R
+* R debugger
+* Rainbow CSV
+
+And in R
+```
+remotes::install_github("ManuelHentschel/vscDebugger")
+```
+
+### Add Radians
+
+[radian](https://github.com/randy3k/radian) is an alternate R console that behaves nicely in VS Code (and in general)
+
+```
+pip install -U radian
+```
+
+### Update VS Code settings
+
+Open the VS Code settings (File > Preferences > Settings) 
+
+* Search for `r.term.linux` and add the path to radians: `/home/exouser/miniconda3/bin/radian`
+* Search for `r.plot.useHttpgd` and set to true (or check the box)
+
+## Add class data to image
 
 ```
 cd ~
@@ -529,26 +569,9 @@ tar -xzvf bis180l_class_data_2020tar.gz
 rm bis180l_class_data_2020tar.gz
 ```
 
-## Change VNC server Settings
-```
-sudo vi /etc/systemd/system/vncserver@.service
+## Turn off most software updates
 
-## edit the `ExecStart` line to match what is below.  This allows vnc to listen on all incoming IPs, and requires TLS encryption.  LEave the rest of the file as is
-
-ExecStart=/usr/bin/vncserver -fg -SecurityTypes TLSVnc -localhost no -rfbauth /home/exouser/.vnc/p
-
-```
-
-### Refresh server and change password
-# Do by ssh, not web desktop
-```
-vncpasswd # Genomics
-sudo systemctl daemon-reload
-vncserver -kill :1
-sudo systemctl enable vncserver@1.service
-sudo systemctl restart vncserver@1
-sudo systemctl status vncserver@1 # to check
-```
+Open Software updates app and select security updates only
 
 ## SSH public key
 
@@ -564,8 +587,6 @@ Flavor: m3.quad
  * 4 CPU cores  
  * 15 GB RAM  
  * 80 GB Root Disk (Custom size, increase from 20 to 80 GB)
-
-**DO NOT Add Web Desktop** (Doing so will wipe out vnc settings)
 
 # Ready for class
 
