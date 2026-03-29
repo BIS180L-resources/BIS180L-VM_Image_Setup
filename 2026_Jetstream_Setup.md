@@ -2,7 +2,7 @@
 
 Tried updating everything from 2024 but lost SSH and guacamole access
 
-From Image: Ubuntu22
+From Image: Ubuntu24
 Flavor: m3.quad  
 
  * 4 CPU cores  
