@@ -569,6 +569,69 @@ tar -xzvf bis180l_class_data_2020tar.gz
 rm bis180l_class_data_2020tar.gz
 ```
 
+## Add manila share.
+This is for sharing large data sets. e.g. PacBio sequencing data.
+
+Create a mount point for the share
+
+```
+sudo mkdir /revio-data
+```
+
+Set up the access key
+```
+sudo vi /etc/ceph/ceph.client.bis180l-students.keyring
+```
+
+Then in the editor paste the following and then save the file and exit:
+```
+[client.bis180l-students]
+    key = AQB/pslp3KVyGhAAYxGhEw+Q167VY49EuqroKA==
+```
+
+Next, adjust permissions of the file you just created:
+
+```
+sudo chmod 600 /etc/ceph/ceph.client.bis180l-students.keyring
+```
+
+Next, edit the file system directory to tell it about the new drive:
+
+```
+sudo cp /etc/fstab /etc/fstab.bak # make a backup copy
+sudo vi /etc/fstab
+```
+
+When the file is open, add the following line to the end of the file.  Then save the file and exit vi
+
+```
+149.165.158.38:6789,149.165.158.22:6789,149.165.158.54:6789,149.165.158.70:6789,149.165.158.86:6789:/volumes/_nogroup/6536e3bf-97c9-4122-909d-3591503956f0/ec45978d-f934-475c-83d5-b566a3170f1b /revio-data ceph name=bis180l-students,x-systemd.device-timeout=30,x-systemd.mount-timeout=30,noatime,_netdev,ro 0   2
+```
+
+Now mount the filesystem:
+
+```
+system-ctl daemon-reload
+sudo mount -a
+```
+
+Check it:
+
+```
+du -h -d 1 /revio-data/
+```
+
+Should give you something like:
+
+```
+0	/revio-data/assignment-08-files
+1.2G	/revio-data/midterm
+310G	/revio-data/Revio
+27G	/revio-data/RepeatObserver
+577M	/revio-data/methylation
+338G	/revio-data/
+```
+
 ## Turn off most software updates
 
 Open Software updates app and select security updates only
