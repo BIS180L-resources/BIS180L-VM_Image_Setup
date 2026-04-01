@@ -569,6 +569,11 @@ tar -xzvf bis180l_class_data_2020tar.gz
 rm bis180l_class_data_2020tar.gz
 ```
 
+## Set github merge strategy
+```
+git config --global pull.rebase false
+```
+
 ## Add manila share.
 This is for sharing large data sets. e.g. PacBio sequencing data.
 
