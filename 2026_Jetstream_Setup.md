@@ -616,7 +616,7 @@ When the file is open, add the following line to the end of the file.  Then save
 Now mount the filesystem:
 
 ```
-system-ctl daemon-reload
+systemctl daemon-reload
 sudo mount -a
 ```
 
