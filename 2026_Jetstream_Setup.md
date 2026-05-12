@@ -74,7 +74,7 @@ apt install bwa -y # probably not needed use hisat
 apt install bowtie2 -y # probably not needed use hisat
 apt install hisat2 python3-hisat2 -y 
 apt install bedtools -y
-apt install freebayes -y
+# apt install freebayes -y # missing, Use Bioconda
 # apt install busco -y # Broken.  Use bioconda, see below
 apt install mafft -y
 apt install probalign -y
@@ -343,6 +343,7 @@ __NOT NEEDED__
 ```
 
 ### Installing GATK 4.5.0.0
+(Not needed 2026)
 
 ```
 cd /usr/local/src
@@ -352,6 +353,12 @@ sudo rm gatk-4.5.0.0.zip
 cd /usr/local/bin
 sudo ln -s /usr/local/src/gatk-4.5.0.0/gatk .
 cd
+```
+
+### Installing Freebayes
+
+```
+conda create -n freebayes -c bioconda freebayes
 ```
 
 ### fastStructure
